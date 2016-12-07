@@ -17,9 +17,17 @@ html(lang="en" ng-app="QuariusApp")
       .sign-up
         form(ng-submit="register()")
           label(for="newUserUsername")
-          input(type="text" id="newUserUsername" ng-model="newUser.username" placeholder="Username")
+          input(type="text" id="newUserUsername" ng-model="newUser.username" placeholder="Username" minlength="4")
           label(for="newUserPassword")
-          input(type="password" id="newUserPassword" ng-model="newUser.password" placeholder="Password")
+          input(type="password" id="newUserPassword" ng-model="newUser.password" placeholder="Password" minlength="4")
+          label(for="newUserBirthdate")
+          input(type="date" id="newUserBirthdate" ng-model="newUser.birthdate" required)
+          label(for="newUserEmail")
+          input(type="email" id="newUserEmail" ng-model="newUser.email" placeholder="E-Mail" required)
+          label(for="newUserType")
+          select(id="newUserType" ng-model="newUser.type" required)
+            option(value="0" selected) Team Member
+            option(value="1") Manager
           button(type="submit") Register
       
       .sign-in
@@ -30,3 +38,8 @@ html(lang="en" ng-app="QuariusApp")
           input(type="text")
           button(type="submit") Log In
           button(ng-click="logOut") Log Out
+      
+      .all-users
+        ul
+          li(ng-repeat="user in allUsers")
+            h5 {{user.username}} - {{user.birthdate}}

@@ -4,8 +4,13 @@ app.controller('UsersController', ['$scope', '$http', '$cookies', function($scop
 
   $scope.newUser = {
     username: '',
-    password: ''
+    password: '',
+    birthdate: '',
+    email: '',
+    type: 0
   }
+
+  $scope.allUsers = {};
 
   $scope.currentUser = {};
 
@@ -13,9 +18,18 @@ app.controller('UsersController', ['$scope', '$http', '$cookies', function($scop
     console.log($scope.newUser);
     var user = {user: $scope.newUser};
     $http.post('/users', user).then(function(req,res){
-      console.log('do something');
+      $scope.getAllUsers();
     });
   }
+
+  $scope.getAllUsers = function(){
+    $http.get('/users').then(function(res){
+      console.log(res.data.users);
+      $scope.allUsers = res.data.users;
+    })
+  }
+
+  $scope.getAllUsers();
 
   $scope.logIn = function(){
     console.log('log-in');

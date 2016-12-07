@@ -9,13 +9,17 @@ var express       = require('express'),
     loadUser      = require('./middleware/loaduser.js');
 
 app.set('view engine', 'jade');
-mongoose.connect(mongoPath);
+app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
-// app.use(loadUser);
+app.use(loadUser);
+mongoose.connect(mongoPath);
 
 //ROUTES
+var userRouter = require('./routes/users');
+app.use('/users', userRouter);
+
 app.get('/', function(req,res){
   res.render('index');
 });

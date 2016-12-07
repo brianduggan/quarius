@@ -1,9 +1,32 @@
 <!DOCTYPE html>
-html(lang="en")
-head
-  meta(charset="UTF-8")
-  meta(name="viewport", content="width=device-width, initial-scale=1.0")
-  meta(http-equiv="X-UA-Compatible", content="ie=edge")
-  title Quarius
-body
+html(lang="en" ng-app="QuariusApp")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    link(href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css", rel="stylesheet", integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u", crossorigin="anonymous")
+    link(rel="stylesheet", href="/css/application.css")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular.min.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-cookies.min.js")
+    script(src="/js/main.js")
+    title Quarius
   
+  body
+    h1 Quarius
+    .users-container(ng-controller="UsersController")
+      .sign-up
+        form(ng-submit="register()")
+          label(for="newUserUsername")
+          input(type="text" id="newUserUsername" ng-model="newUser.username" placeholder="Username")
+          label(for="newUserPassword")
+          input(type="password" id="newUserPassword" ng-model="newUser.password" placeholder="Password")
+          button(type="submit") Register
+      
+      .sign-in
+        form(ng-submit="logIn()")
+          label(for="")
+          input(type="text")
+          label(for="")
+          input(type="text")
+          button(type="submit") Log In
+          button(ng-click="logOut") Log Out

@@ -20,7 +20,7 @@ UserSchema.pre('save', function(next){
   next();
 });
 
-UserSchema.methods.setToken = function(passwordTry, callback){
+UserSchema.methods.setToken = function(callback){
   var scope = this;
   crypto.randomBytes(256, function(err, buffer){
     if(err) return callback(err);
@@ -38,6 +38,7 @@ UserSchema.methods.authenticate = function(passwordTry, callback){
     callback(null, isMatch);
   });
 };
+
 
 module.exports = mongoose.model('User', UserSchema);
 //

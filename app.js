@@ -1,12 +1,12 @@
 //MODULES & MIDDLEWARE
-var express       = require('express'),
-    app           = express(),
-    bodyParser    = require('body-parser'),
-    morgan        = require('morgan'),
-    mongoose      = require('mongoose'),
-    mongoPath     = process.env.MONGOLAB_URI || 'mongodb://localhost/quarius-01',
-    cookieParser  = require('cookie-parser'),
-    loadUser      = require('./middleware/loaduser.js');
+var express         = require('express'),
+    app             = express(),
+    bodyParser      = require('body-parser'),
+    morgan          = require('morgan'),
+    mongoose        = require('mongoose'),
+    mongoPath       = process.env.MONGOLAB_URI || 'mongodb://localhost/quarius-01',
+    cookieParser    = require('cookie-parser'),
+    loadUser        = require('./middleware/loaduser.js');
 
 app.set('view engine', 'jade');
 app.use(express.static('./public'));

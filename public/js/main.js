@@ -1,38 +1,17 @@
-var app = angular.module('QuariusApp', ['ngCookies']);
+var app = angular.module('QuariusApp', ['UsersController', 'TestController', 'ngCookies', 'AuthService']);
 
-app.controller('UsersController', ['$scope', '$http', '$cookies', function($scope, $http, $cookies){
-
-  $scope.newUser = {
-    username: '',
-    password: '',
-    birthdate: '',
-    email: '',
-    type: 0
-  }
-
-  $scope.allUsers = {};
-
-  $scope.currentUser = {};
-
-  $scope.register = function(){
-    console.log($scope.newUser);
-    var user = {user: $scope.newUser};
-    $http.post('/users', user).then(function(req,res){
-      $scope.getAllUsers();
-    });
-  }
-
-  $scope.getAllUsers = function(){
-    $http.get('/users').then(function(res){
-      console.log(res.data.users);
-      $scope.allUsers = res.data.users;
-    })
-  }
-
-  $scope.getAllUsers();
-
-  $scope.logIn = function(){
-    console.log('log-in');
-  }
-
-}]);
+// app.config(['$routeProvider', function($routeProvider){
+//   $routeProvider
+//     .when('/test', {
+//       templateUrl: './partials/index.jade',
+//       controller: 'usersController'
+//     })
+// }]);
+//
+// app.run(function($rootScope, $location, $route, AuthService){
+//   $rootScope.$on('$routeChangeStart', function(event, next, current){
+//     if (AuthService.isLoggedIn === false){
+//       $location.path('/login');
+//     }
+//   })
+// })

@@ -2,13 +2,16 @@ var testController = angular.module("TestController", ['ngCookies']);
 
 testController.controller('TestController', ['$scope', '$http', '$cookies', function($scope, $http, $cookies){
 
-  $scope.currentUser = {};
+  $scope.currentUser = null;
 
-  $scope.getCurrentUser = function(){
+  $scope.getCurrentUser = function(callback){
     var token = $cookies.get('token');
     $http.get('/users/find/current').then(function(response){
       var currentUser = response.data;
       $scope.currentUser = currentUser;
+      if (callback){
+        callback();
+      }
     });
   };
 
@@ -16,6 +19,6 @@ testController.controller('TestController', ['$scope', '$http', '$cookies', func
     console.log('hi!');
   };
 
-  $scope.getCurrentUser();
+  $scope.getCurrentUser(function(){console.log($scope.currentUser);});
 
 }]);

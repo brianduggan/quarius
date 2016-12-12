@@ -2,3 +2,50 @@ body {
   background: skyblue;
   color: darkslategrey;
 }
+
+/* HEADER STYLINGS */
+
+header {
+  background: skyblue;
+}
+
+header h1 {
+  display: inline-block;
+}
+
+nav {
+  display: inline-block;
+}
+
+nav a {
+  padding: 3%;
+}
+
+/* END HEADER STYLING */
+
+/* REGISTER MODAL */
+
+.sign-up-container {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background: rgba(0,0,0,0.4);
+}
+
+.modal-box {
+  top: 5%;
+  background: white;
+  padding: 2%;
+  margin: 4% auto;
+  text-transform: center;
+  width: 80%;
+}
+
+#close-modal {
+  float: right;
+}
+
+/* END REGISTER MODAL */
+
+/* END */

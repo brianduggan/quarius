@@ -1,12 +1,17 @@
 var usersController = angular.module("UsersController", ['ngCookies']);
 
-usersController.controller('UsersController', ['$scope', '$http', '$cookies', function($scope, $http, $cookies){
+usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$window', function($scope, $http, $cookies, $window){
 
   $scope.newUser = {
     username: '',
     password: '',
-    birthdate: '',
-    email: '',
+    firstname: '',
+    lastname: '',
+    company: '',
+    email1: '',
+    email2: '',
+    offPhone: '',
+    cellPhone: '',
     type: 0
   }
 
@@ -18,6 +23,8 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', fu
   $scope.allUsers = {};
 
   $scope.currentUser = null;
+
+  $scope.showSign = false;
 
   $scope.register = function(){
     console.log($scope.newUser);
@@ -39,12 +46,14 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', fu
     $http.post('/users/authenticate', user).then(function(res){
       var token = res.data.user.token;
       $cookies.put('token', token);
+      $scope.getCurrentUser();
     });
   }
 
   $scope.logOut = function(){
     $cookies.remove('token');
     $scope.currentUser = null;
+    $scope.getCurrentUser();
   }
 
   $scope.getCurrentUser = function(){
@@ -54,6 +63,10 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', fu
       $scope.currentUser = currentUser;
     });
   };
+
+  $scope.closeModal = function(){
+    $scope.showSign = !$scope.showSign;
+  }
 
   $scope.getCurrentUser();
 

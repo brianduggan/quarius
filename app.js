@@ -21,7 +21,7 @@ var userRouter = require('./routes/users');
 app.use('/users', userRouter);
 
 app.get('/', function(req,res){
-  res.render('index');
+  res.render(__dirname + '/public/views/index');
 });
 
 

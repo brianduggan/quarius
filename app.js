@@ -4,7 +4,7 @@ var express         = require('express'),
     bodyParser      = require('body-parser'),
     morgan          = require('morgan'),
     mongoose        = require('mongoose'),
-    mongoPath       = process.env.MONGOLAB_URI || 'mongodb://localhost/quarius-01',
+    mongoPath       = process.env.MONGODB_URI || 'mongodb://localhost/quarius-01',
     cookieParser    = require('cookie-parser'),
     loadUser        = require('./middleware/loaduser.js');
 

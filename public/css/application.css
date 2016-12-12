@@ -14,11 +14,20 @@ header h1 {
 }
 
 nav {
+  display: inline;
+}
+
+nav p {
+  padding: 1%;
   display: inline-block;
 }
 
-nav a {
-  padding: 3%;
+input[type="text"]#signUsername,
+input[type="text"]#signPassword {
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 4px;
 }
 
 /* END HEADER STYLING */
@@ -31,6 +40,7 @@ nav a {
   top: 0;
   position: fixed;
   background: rgba(0,0,0,0.4);
+  z-index: 2;
 }
 
 .modal-box {
@@ -40,6 +50,7 @@ nav a {
   margin: 4% auto;
   text-transform: center;
   width: 80%;
+  z-index: 3;
 }
 
 #close-modal {

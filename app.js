@@ -8,6 +8,7 @@ var express         = require('express'),
     cookieParser    = require('cookie-parser'),
     loadUser        = require('./middleware/loaduser.js');
 
+require('dotenv').config();
 app.set('view engine', 'jade');
 app.use(express.static('./public'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,6 +20,9 @@ mongoose.connect(mongoPath);
 //ROUTES
 var userRouter = require('./routes/users');
 app.use('/users', userRouter);
+
+var mailRouter = require('./routes/mail')
+app.use('/contact', mailRouter);
 
 app.get('/', function(req,res){
   res.render(__dirname + '/public/views/index');

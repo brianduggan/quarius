@@ -26,6 +26,8 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.showSign = false;
 
+  $scope.showPage = 0;
+
   $scope.register = function(){
     console.log($scope.newUser);
     var user = {user: $scope.newUser};
@@ -69,5 +71,17 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   }
 
   $scope.getCurrentUser();
+
+  $scope.showAbout = function(){
+    $scope.showPage = 1;
+  }
+
+  $scope.showContact = function(){
+    $scope.showPage = 2;
+  }
+
+  $scope.showResources = function(){
+    $scope.showPage = 3;
+  }
 
 }]);

@@ -11,6 +11,7 @@ html(lang="en" ng-app="QuariusApp")
     script(src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.9/angular-route.min.js")
     script(src="/js/main.js")
     script(src="./js/controllers/usersController.js")
+    script(src="./js/controllers/sendMailController.js")
     //- script(src="/js/controllers/TestController.js")
     //- script(src="/js/services/authservice.js")
     title Quarius
@@ -19,13 +20,10 @@ html(lang="en" ng-app="QuariusApp")
     header
       h1 Quarius
       nav
-        a(href="#about") About
-        a(href="#contact") Contact
-        a(href="#resources") Resources
-      div
-        a(ng-click="showSign = true" ng-show="!showSign && !currentUser") Sign Up
-      .users-container
-
+        p(ng-click="showAbout()") About
+        p(ng-click="showContact()") Contact
+        p(ng-click="showResources()") Resources
+      div.nav-sign
         .sign-in(ng-if="!currentUser")
           form(ng-submit="logIn()")
             label(for="signUsername")
@@ -33,115 +31,134 @@ html(lang="en" ng-app="QuariusApp")
             label(for="signPassword")
             input(type="text" id="signPassword" ng-model="signUser.password" placeholder="Password")
             button(type="submit") Log In
+        a(ng-click="showSign = true" ng-show="!showSign && !currentUser") Sign Up
         a(ng-click="logOut()" ng-if="currentUser") Log Out
         
-        .sign-up-container(ng-if="showSign")
-          .modal-box
-            span(id="close-modal" ng-click="closeModal()") X
-            h2 Register
-            h6 All fields with (*) are required
-            form(ng-submit="register()")
-              div
-                label(for="newUserUsername") Username
-                input(type="text" id="newUserUsername" ng-model="newUser.username" placeholder="Username" minlength="4" required)
-                p6 Example: johnsmith
-              div
-                label(for="newUserPassword") Password
-                input(type="password" id="newUserPassword" ng-model="newUser.password" placeholder="Password" minlength="4" required)
-                p6 Example: MySecretPassword
-              div
-                label(for="newUserFirstName") First Name
-                input(type="text" id="newUserFirstName" ng-model="newUser.firstname" placeholder="First Name" required)
-                p6 Example: John
-              div
-                label(for="newUserLastName") Last Name
-                input(type="text" id="newUserLastName" ng-model="newUser.lastname" placeholder="Last Name" required)
-                p6 Example: Smith
-              div
-                label(for="newUserCompany") Company/Organization
-                input(type="text" id="newUserCompany" ng-model="newUser.company" placeholder="Company/Organization" required)
-                p6 Example: Serval Ventures
-              div
-                label(for="newUserEmail1") E-Mail Address
-                input(type="email" id="newUserEmail1" ng-model="newUser.email1" placeholder="E-Mail" required)
-                p6 Example: john.smith@gmail.com
-              div
-                label(for="newUserEmail2") Alternate E-Mail Address
-                input(type="text" id="newUserEmail2" ng-model="newUser.email2" placeholder="Alternate E-Mail")
-                p6 Example: johnnyrocket@yahoo.com
-              div
-                label(for="newUserOffPhone") Office Phone Number
-                input(type="tel" id="newUserOffPhone" ng-model="newUser.offPhone" placeholder="Office Phone Number" required)
-                p6 Example: 555-555-5555
-              div
-                label(for="newUserCellPhone") Cell Phone Number 
-                input(type="tel" id="newUserCellPhone" ng-model="newUser.cellPhone" placeholder="Cell Phone Number" required)
-                p6 Example: 666-666-6666
-              div
-                select(id="newUserType" ng-model="newUser.type" required)
-                  option(value="0" selected) Team Member
-                  option(value="1") Team Leader
-                  option(value="2") Manager
-              div
-              button(type="submit") Register
+      .sign-up-container(ng-if="showSign")
+        .modal-box
+          span(id="close-modal" ng-click="closeModal()") X
+          h2 Register
+          h6 All fields with (*) are required
+          form(ng-submit="register()")
+            div
+              label(for="newUserUsername") Username
+              input(type="text" id="newUserUsername" ng-model="newUser.username" placeholder="Username" minlength="4" required)
+              p6 Example: johnsmith
+            div
+              label(for="newUserPassword") Password
+              input(type="password" id="newUserPassword" ng-model="newUser.password" placeholder="Password" minlength="4" required)
+              p6 Example: MySecretPassword
+            div
+              label(for="newUserFirstName") First Name
+              input(type="text" id="newUserFirstName" ng-model="newUser.firstname" placeholder="First Name" required)
+              p6 Example: John
+            div
+              label(for="newUserLastName") Last Name
+              input(type="text" id="newUserLastName" ng-model="newUser.lastname" placeholder="Last Name" required)
+              p6 Example: Smith
+            div
+              label(for="newUserCompany") Company/Organization
+              input(type="text" id="newUserCompany" ng-model="newUser.company" placeholder="Company/Organization" required)
+              p6 Example: Serval Ventures
+            div
+              label(for="newUserEmail1") E-Mail Address
+              input(type="email" id="newUserEmail1" ng-model="newUser.email1" placeholder="E-Mail" required)
+              p6 Example: john.smith@gmail.com
+            div
+              label(for="newUserEmail2") Alternate E-Mail Address
+              input(type="text" id="newUserEmail2" ng-model="newUser.email2" placeholder="Alternate E-Mail")
+              p6 Example: johnnyrocket@yahoo.com
+            div
+              label(for="newUserOffPhone") Office Phone Number
+              input(type="tel" id="newUserOffPhone" ng-model="newUser.offPhone" placeholder="Office Phone Number" required)
+              p6 Example: 555-555-5555
+            div
+              label(for="newUserCellPhone") Cell Phone Number 
+              input(type="tel" id="newUserCellPhone" ng-model="newUser.cellPhone" placeholder="Cell Phone Number" required)
+              p6 Example: 666-666-6666
+            div
+              select(id="newUserType" ng-model="newUser.type" required)
+                option(value="0" selected) Team Member
+                option(value="1") Team Leader
+                option(value="2") Manager
+            div
+            button(type="submit") Register
     .container
-      h2(class="tagline") ...I See Your True Colors... tagline here
-      
-      div
-        h3 Discover Your True Colors
-        h5 Managing a diverse group can be challenging
-        p Take this quick 5-minute color quiz to gain insight into your own color personality, and share it with your team to find out more about how you can strengthen your work relationships and improve understanding of your role on the team.
+      .home(ng-show="showPage === 0")
+        h2(class="tagline") ...I See Your True Colors... tagline here
         
-        .color-description
-          .row
-            .col-md-12
-          .row
-            .col-md-3
-              h4 Green
-                ul
-                  li Expressive
-                  li Empathetic
-                  li People-Focused
-            .col-md-3
-              h4 Blue
-                ul
-                  li Analytical
-                  li Theoretical
-                  li Competitive
-            .col-md-3
-              h4 Gold
-                ul
-                  li Organized
-                  li Systematic
-                  li Accountable
-            .col-md-3
-              h4 Red
-                ul
-                  li Courageous
-                  li Spontaneous
-                  li Action-Oriented
-        
-        .fourQtest(ng-show="!currentUser")
-          h4 Sample 4 Q Test
-          form(ng-submit="clickMe()")
-            h4 At least 51% of the time, you tend to:
-            div
-              label() Meet deadlines at the last minute
-              input(type="radio")
-              label() Meet deadlines early
-              input(type="radio")
-            div
-              label() See and point out flaws
-              input(type="radio")
-              label() Observe and compliment others
-              input(type="radio")
-            div
-              label(for="fourQthree") Question #3
-              input(type="radio")
-              input(type="radio")
-            div
-              label(for="fourQfour") Question #4
-              input(type="radio")
-              input(type="radio")
-            button(type="submit") Click Me
-        
+        div
+          h3 Discover Your True Colors
+          h5 Managing a diverse group can be challenging
+          p Take this quick 5-minute color quiz to gain insight into your own color personality, and share it with your team to find out more about how you can strengthen your work relationships and improve understanding of your role on the team.
+          
+          .color-description
+            .row
+              .col-md-12
+            .row
+              .col-md-3
+                h4 Green
+                  ul
+                    li Expressive
+                    li Empathetic
+                    li People-Focused
+              .col-md-3
+                h4 Blue
+                  ul
+                    li Analytical
+                    li Theoretical
+                    li Competitive
+              .col-md-3
+                h4 Gold
+                  ul
+                    li Organized
+                    li Systematic
+                    li Accountable
+              .col-md-3
+                h4 Red
+                  ul
+                    li Courageous
+                    li Spontaneous
+                    li Action-Oriented
+          
+          .fourQtest(ng-show="!currentUser")
+            h4 Sample 4 Q Test
+            form(ng-submit="clickMe()")
+              h4 At least 51% of the time, you tend to:
+              div
+                label() Meet deadlines at the last minute
+                input(type="radio")
+                label() Meet deadlines early
+                input(type="radio")
+              div
+                label() See and point out flaws
+                input(type="radio")
+                label() Observe and compliment others
+                input(type="radio")
+              div
+                label(for="fourQthree") Question #3
+                input(type="radio")
+                input(type="radio")
+              div
+                label(for="fourQfour") Question #4
+                input(type="radio")
+                input(type="radio")
+              
+      .about(ng-show="showPage === 1")
+        h4 About Quarius
+      .contact(ng-show="showPage === 2" ng-controller="sendMailController")
+        h4 Contact Us
+        form(action="")
+          div
+            label(for="contactName")
+            input(type="text" id="contactName" ng-model="contact.name")
+          div
+            label(for="contactEmail") E-Mail
+            input(type="text" id="contactEmail" ng-model="contact.email")
+          div
+            label(for="contactMessage") Message
+            textarea(id="contactMessage" ng-model="contact.message")
+          button(type="button" ng-click="sendMail()") Send Message
+      .resources(ng-show="showPage === 3")
+        h4 Resources
+          

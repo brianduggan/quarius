@@ -23,6 +23,7 @@ sendMailController.controller('sendMailController', ['$scope', '$http', function
     $http.post('/contact', data).then(function(response){
       if (response.status === 200){
         $scope.showMessage = 'Sent!';
+        $scope.contact = $scope.contactReset;
       } else {
         $scope.showMessage = 'There was an error sending your message';
       }

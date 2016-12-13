@@ -1,0 +1,12 @@
+h4 Contact Us
+form(action="")
+  div
+    label(for="contactName")
+    input(type="text" id="contactName" ng-model="contact.name")
+  div
+    label(for="contactEmail") E-Mail
+    input(type="text" id="contactEmail" ng-model="contact.email")
+  div
+    label(for="contactMessage") Message
+    textarea(id="contactMessage" ng-model="contact.message")
+  button(type="button" ng-click="sendMail()") Send Message

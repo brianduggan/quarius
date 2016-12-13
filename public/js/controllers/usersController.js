@@ -84,4 +84,8 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     $scope.showPage = 3;
   }
 
+  $scope.showMain = function(){
+    $scope.showPage = 0;
+  }
+
 }]);

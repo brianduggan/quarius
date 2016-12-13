@@ -22,12 +22,22 @@ nav p {
   display: inline-block;
 }
 
+.nav-sign {
+  display: inline;
+}
+
 input[type="text"]#signUsername,
 input[type="text"]#signPassword {
   border: none;
   border-radius: 5px;
   margin: 10px;
   padding: 4px;
+}
+
+#log-out {
+  position: fixed;
+  right: 2%;
+  top: 30px;
 }
 
 /* END HEADER STYLING */

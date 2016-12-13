@@ -1,0 +1,48 @@
+.modal-box
+  span(id="close-modal" ng-click="closeModal()") X
+  h2 Register
+  h6 All fields with (*) are required
+  form(ng-submit="register()")
+    div
+      label(for="newUserUsername") Username
+      input(type="text" id="newUserUsername" ng-model="newUser.username" placeholder="Username" minlength="4" required)
+      p6 Example: johnsmith
+    div
+      label(for="newUserPassword") Password
+      input(type="password" id="newUserPassword" ng-model="newUser.password" placeholder="Password" minlength="4" required)
+      p6 Example: MySecretPassword
+    div
+      label(for="newUserFirstName") First Name
+      input(type="text" id="newUserFirstName" ng-model="newUser.firstname" placeholder="First Name" required)
+      p6 Example: John
+    div
+      label(for="newUserLastName") Last Name
+      input(type="text" id="newUserLastName" ng-model="newUser.lastname" placeholder="Last Name" required)
+      p6 Example: Smith
+    div
+      label(for="newUserCompany") Company/Organization
+      input(type="text" id="newUserCompany" ng-model="newUser.company" placeholder="Company/Organization" required)
+      p6 Example: Serval Ventures
+    div
+      label(for="newUserEmail1") E-Mail Address
+      input(type="email" id="newUserEmail1" ng-model="newUser.email1" placeholder="E-Mail" required)
+      p6 Example: john.smith@gmail.com
+    div
+      label(for="newUserEmail2") Alternate E-Mail Address
+      input(type="text" id="newUserEmail2" ng-model="newUser.email2" placeholder="Alternate E-Mail")
+      p6 Example: johnnyrocket@yahoo.com
+    div
+      label(for="newUserOffPhone") Office Phone Number
+      input(type="tel" id="newUserOffPhone" ng-model="newUser.offPhone" placeholder="Office Phone Number" required)
+      p6 Example: 555-555-5555
+    div
+      label(for="newUserCellPhone") Cell Phone Number 
+      input(type="tel" id="newUserCellPhone" ng-model="newUser.cellPhone" placeholder="Cell Phone Number" required)
+      p6 Example: 666-666-6666
+    div
+      select(id="newUserType" ng-model="newUser.type" required)
+        option(value="0" selected) Team Member
+        option(value="1") Team Leader
+        option(value="2") Manager
+    div
+    button(type="submit") Register

@@ -1,0 +1,72 @@
+body {
+  background: skyblue;
+  color: darkslategrey;
+}
+
+/* HEADER STYLINGS */
+
+header {
+  background: skyblue;
+}
+
+header h1 {
+  display: inline-block;
+}
+
+nav {
+  display: inline;
+}
+
+nav p {
+  padding: 1%;
+  display: inline-block;
+}
+
+.nav-sign {
+  display: inline;
+}
+
+input[type="text"]#signUsername,
+input[type="text"]#signPassword {
+  border: none;
+  border-radius: 5px;
+  margin: 10px;
+  padding: 4px;
+}
+
+#log-out {
+  position: fixed;
+  right: 2%;
+  top: 30px;
+}
+
+/* END HEADER STYLING */
+
+/* REGISTER MODAL */
+
+.sign-up-container {
+  height: 100%;
+  width: 100%;
+  top: 0;
+  position: fixed;
+  background: rgba(0,0,0,0.4);
+  z-index: 2;
+}
+
+.modal-box {
+  top: 5%;
+  background: white;
+  padding: 2%;
+  margin: 4% auto;
+  text-transform: center;
+  width: 80%;
+  z-index: 3;
+}
+
+#close-modal {
+  float: right;
+}
+
+/* END REGISTER MODAL */
+
+/* END */

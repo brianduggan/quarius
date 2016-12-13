@@ -1,30 +1,51 @@
+/******** VARIABLE DECLARATIONS ********/
+
+
+/******** BODY STYLINGS ********/
 body {
   background: skyblue;
   color: darkslategrey;
 }
 
-/* HEADER STYLINGS */
+/******** END BODY STYLINGS ********/
+
+
+/******** HEADER STYLINGS ********/
 
 header {
-  background: skyblue;
-}
-
-header h1 {
-  display: inline-block;
+  background: burlywood;
+  position: fixed;
+  top: 0;
+  width: 100%;
+    h1 {
+      display: inline-block;
+    }
 }
 
 nav {
   display: inline;
+    p {
+      padding: 1%;
+      display: inline-block;
+    }
 }
 
-nav p {
-  padding: 1%;
-  display: inline-block;
-}
 
 .nav-sign {
-  display: inline;
+  display: inline-block;
+    form {
+      position: absolute;
+      right: 5px;
+      top: 21px;
+    }
+    #log-error {
+      color: red;
+      position: absolute;
+      right: 40px;
+      top: 60px;
+    }
 }
+
 
 input[type="text"]#signUsername,
 input[type="text"]#signPassword {
@@ -40,33 +61,54 @@ input[type="text"]#signPassword {
   top: 30px;
 }
 
-/* END HEADER STYLING */
+/******** END HEADER STYLING *********/
 
-/* REGISTER MODAL */
+/******** REGISTER MODAL ********/
 
 .sign-up-container {
   height: 100%;
   width: 100%;
   top: 0;
   position: fixed;
-  background: rgba(0,0,0,0.4);
-  z-index: 2;
+  background: rgba(0,0,0,0.6);
+  z-index: 5;
 }
 
 .modal-box {
+  position: relative;
   top: 5%;
   background: white;
   padding: 2%;
   margin: 4% auto;
   text-transform: center;
   width: 80%;
-  z-index: 3;
+  z-index: 6;
 }
 
 #close-modal {
   float: right;
 }
 
-/* END REGISTER MODAL */
+/********* END REGISTER MODAL *********/
 
-/* END */
+/******** MAIN CONTAINER ********/
+
+.container {
+  margin: 12% auto 3% auto;
+  padding: 2%;
+  border: 1px solid black;
+}
+
+
+/******** END MAIN CONTAINER ********/
+
+/******** FOOTER ********/
+
+footer {
+  padding: 1%;
+  background: aliceblue;
+  width: 100%;
+}
+
+
+/********* END *********/

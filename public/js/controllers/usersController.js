@@ -20,25 +20,33 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     password: ''
   }
 
+  $scope.newUserReset = angular.copy($scope.newUser);
+
   $scope.allUsers = {};
-
   $scope.currentUser = null;
-
+  $scope.regMessage = null;
+  $scope.regSuccess = false;
+  $scope.logError = null;
   $scope.showSign = false;
-
   $scope.showPage = 0;
 
   $scope.register = function(){
     console.log($scope.newUser);
     var user = {user: $scope.newUser};
-    $http.post('/users/', user).then(function(req,res){
-      $scope.getAllUsers();
+    $http.post('/users/', user).then(function(res){
+      if (res.data.status === 302){
+        $scope.regMessage = 'Sorry, this username exists'
+      } else {
+        $scope.regMessage = 'Success! You\'re account has been created. Please log-in'
+        $scope.regSuccess = true;
+        $scope.newUser = $scope.newUserReset;
+      }
     });
   }
 
   $scope.getAllUsers = function(){
     $http.get('/users').then(function(res){
-      console.log(res.data.users);
+      // console.log(res.data.users);
       $scope.allUsers = res.data.users;
     })
   }
@@ -46,9 +54,14 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   $scope.logIn = function(){
     var user = $scope.signUser;
     $http.post('/users/authenticate', user).then(function(res){
-      var token = res.data.user.token;
-      $cookies.put('token', token);
-      $scope.getCurrentUser();
+      if (res.data.status === 302) {
+        console.log(res.data.status);
+        $scope.logError = res.data.description;
+      } else{
+        var token = res.data.user.token;
+        $cookies.put('token', token);
+        $scope.getCurrentUser();
+      }
     });
   }
 
@@ -65,6 +78,11 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
       $scope.currentUser = currentUser;
     });
   };
+
+  $scope.signUpModal = function(){
+    $scope.showSign = true;
+    $scope.regSuccess = false;
+  }
 
   $scope.closeModal = function(){
     $scope.showSign = !$scope.showSign;

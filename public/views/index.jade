@@ -4,6 +4,8 @@ html(lang="en" ng-app="QuariusApp")
     include includes/head
   
   body(ng-controller="UsersController")
+    .sign-up-container(ng-if="showSign")
+      include includes/sign-up
     header
       h1(ng-click="showMain()") Quarius
       nav
@@ -11,6 +13,7 @@ html(lang="en" ng-app="QuariusApp")
         p(ng-click="showContact()") Contact
         p(ng-click="showResources()") Resources
         a(id="log-out" ng-click="logOut()" ng-if="currentUser") Log Out
+        a(ng-click="signUpModal()" ng-show="!showSign && !currentUser") Sign Up
       div.nav-sign
         .sign-in(ng-if="!currentUser")
           form(ng-submit="logIn()")
@@ -19,10 +22,8 @@ html(lang="en" ng-app="QuariusApp")
             label(for="signPassword")
             input(type="text" id="signPassword" ng-model="signUser.password" placeholder="Password")
             button(type="submit") Log In
-        a(ng-click="showSign = true" ng-show="!showSign && !currentUser") Sign Up
+          p(id="log-error" ng-if="logError") {{logError}}
         
-      .sign-up-container(ng-if="showSign")
-        include includes/sign-up
             
     .container
       .home(ng-show="showPage === 0")

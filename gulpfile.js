@@ -8,4 +8,10 @@ gulp.task('compileSass', function(){
              .pipe(sass())
              .pipe(maps.write())
              .pipe(gulp.dest('./public/css'));
-})
+});
+
+gulp.task('watch-sass', function(){
+  gulp.watch('./public/scss/*.scss', ['compileSass']);
+});
+
+gulp.task('default', ['watch-sass']);

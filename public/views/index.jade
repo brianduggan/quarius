@@ -30,13 +30,13 @@ html(lang="en" ng-app="QuariusApp")
         include includes/home
               
       .about(ng-show="showPage === 1")
-        h4 About Quarius
+        include includes/about
         
       .contact(ng-show="showPage === 2" ng-controller="sendMailController")
         include includes/contact
         
       .resources(ng-show="showPage === 3")
-        h4 Resources
+        include includes/resources
     
     footer
       p &copy;2016 Quarius & Serval Ventures

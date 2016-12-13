@@ -18,7 +18,8 @@ sendMailController.controller('sendMailController', ['$scope', '$http', function
       name: $scope.contact.name,
       email: $scope.contact.email,
       subject: $scope.contact.subject,
-      message: $scope.contact.message
+      message: $scope.contact.message,
+      topic: $scope.contact.topic
     }
     $http.post('/contact', data).then(function(response){
       if (response.status === 200){

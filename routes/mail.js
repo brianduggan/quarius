@@ -13,7 +13,7 @@ router.post('/', function(req,res){
   var mailOptions = {
     from: req.body.name + ' <'+req.body.email+'>',
     to: 'brian.e.duggan@icloud.com',
-    subject: req.body.subject,
+    subject: req.body.topic + ': '+ req.body.subject,
     text: req.body.message
   };
   console.log(mailOptions);

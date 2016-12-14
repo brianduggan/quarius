@@ -13,10 +13,12 @@ body {
 /******** HEADER STYLINGS ********/
 
 header {
-  background: burlywood;
+  background: darkseagreen;
   position: fixed;
   top: 0;
   width: 100%;
+  border-bottom: 0.5px solid darkblue;
+  z-index: 2;
     h1 {
       display: inline-block;
     }
@@ -46,6 +48,17 @@ nav {
     }
 }
 
+.register-form label,
+.register-form input,
+.register-form p6 {
+  display: block;
+}
+
+.register-form p6 {
+  padding: 0.5% 0 1% 0;
+  font-style: italic;
+}
+
 
 input[type="text"]#signUsername,
 input[type="text"]#signPassword {
@@ -72,17 +85,18 @@ input[type="text"]#signPassword {
   position: fixed;
   background: rgba(0,0,0,0.6);
   z-index: 5;
+  overflow: scroll;
 }
 
 .modal-box {
   position: relative;
-  top: 5%;
+  top: 3%;
   background: white;
   padding: 2%;
   margin: 4% auto;
-  text-transform: center;
   width: 80%;
   z-index: 6;
+  overflow: scroll;
 }
 
 #close-modal {
@@ -95,19 +109,48 @@ input[type="text"]#signPassword {
 
 .container {
   margin: 12% auto 3% auto;
-  padding: 2%;
-  border: 1px solid black;
+  padding: 1% 2% 2% 2%;
+  border-radius: 5px;
+  background-color: aliceblue;
+  -webkit-box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
+  -moz-box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
+  box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
 }
 
 
 /******** END MAIN CONTAINER ********/
 
+/******** COLOR INFO BOXES ********/
+.color-box-Green {
+  color: green;
+}
+
+.color-box-Blue {
+  color: blue;
+}
+
+.color-box-Gold {
+  color: gold;
+}
+.color-box-Red {
+  color: red;
+}
+/******** END COLOR INFO BOXES ********/
+
+/******** ABOUT PAGE ********/
+.team img {
+  border-radius: 100%;
+}
+/******** END ABOUT PAGE ********/
+
 /******** FOOTER ********/
 
 footer {
+  border-top: 1px solid darkblue;
   padding: 1%;
-  background: aliceblue;
-  width: 100%;
+  height: 2%;
+  color: aliceblue;
+  background: cornflowerblue;
 }
 
 

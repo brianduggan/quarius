@@ -8,31 +8,12 @@ div
   .color-description
     .row
       .col-md-12
+        h3 
     .row
-      .col-md-3
-        h4 Green
+      .col-md-3(ng-repeat="color in colors" class="color-box-{{color.name}}")
+        h4 {{color.icon}} {{color.name}}
           ul
-            li Expressive
-            li Empathetic
-            li People-Focused
-      .col-md-3
-        h4 Blue
-          ul
-            li Analytical
-            li Theoretical
-            li Competitive
-      .col-md-3
-        h4 Gold
-          ul
-            li Organized
-            li Systematic
-            li Accountable
-      .col-md-3
-        h4 Red
-          ul
-            li Courageous
-            li Spontaneous
-            li Action-Oriented
+            li(ng-repeat="quality in color.qualities") {{quality}}
   
   .fourQtest(ng-show="!currentUser")
     include 4qtest

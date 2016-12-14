@@ -30,6 +30,29 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   $scope.showSign = false;
   $scope.showPage = 0;
 
+  $scope.colors = [
+    {
+      name: 'Green',
+      icon: '●',
+      qualities: ['Expressive', 'Empathetic', 'People-Focused']
+    },
+    {
+      name: 'Blue',
+      icon: '■',
+      qualities: ['Analytical', 'Theoretical', 'Competitive']
+    },
+    {
+      name: 'Gold',
+      icon: '▲',
+      qualities: ['Organized', 'Systematic', 'Accountable']
+    },
+    {
+      name: 'Red',
+      icon: '⬟',
+      qualities: ['Courageous', 'Spontaneous', 'Action-Oriented']
+    }
+  ];
+
   $scope.register = function(){
     console.log($scope.newUser);
     var user = {user: $scope.newUser};

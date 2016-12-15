@@ -1,21 +1,25 @@
 h3 Sample 4 Q Test
-form(ng-submit="clickMe()")
+form
   h4 At least 51% of the time, you tend to:
   div
     label() Meet deadlines at the last minute
-    input(type="radio")
+      input(type="radio" value="1" name="q1" ng-model="quiz.q1")
     label() Meet deadlines early
-    input(type="radio")
+      input(type="radio" value="2" name="q1" ng-model="quiz.q1")
   div
     label() See and point out flaws
-    input(type="radio")
+      input(type="radio" value="1" name="q2" ng-model="quiz.q2")
     label() Observe and compliment others
-    input(type="radio")
+      input(type="radio" value="2" name="q2" ng-model="quiz.q2")
   div
-    label(for="fourQthree") Question #3
-    input(type="radio")
-    input(type="radio")
+    label() Make detailed plans and schedules
+      input(type="radio" value="1" name="q3" ng-model="quiz.q3")
+    label() Be spontaneous and flexible
+      input(type="radio" value="2" name="q3" ng-model="quiz.q3")
   div
-    label(for="fourQfour") Question #4
-    input(type="radio")
-    input(type="radio")
+    label() Stay organized and complete projects
+      input(type="radio" value="1" name="q4" ng-model="quiz.q4")
+    label() Juggle many project
+      input(type="radio" value="2" name="q4" ng-model="quiz.q4")
+  button(type="submit" ng-click="clickMe()") Click Me
+  p.test-error(ng-if="fourQerr") {{fourQerr}}

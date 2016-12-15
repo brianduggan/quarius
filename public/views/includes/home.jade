@@ -15,5 +15,5 @@ div
           ul
             li(ng-repeat="quality in color.qualities") {{quality}}
   
-  .fourQtest(ng-show="!currentUser")
+  .fourQtest(ng-show="!currentUser" ng-controller="TestController")
     include 4qtest

@@ -24,6 +24,11 @@ header {
     }
 }
 
+header h1:hover,
+header nav p:hover {
+  cursor: pointer;
+}
+
 nav {
   display: inline;
     p {
@@ -109,7 +114,8 @@ input[type="text"]#signPassword {
 
 .container {
   margin: 12% auto 3% auto;
-  padding: 1% 2% 2% 2%;
+  min-height: 66vh;
+  padding: 1% 2% 50px 2%;
   border-radius: 5px;
   background-color: aliceblue;
   -webkit-box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
@@ -152,6 +158,15 @@ footer {
   color: aliceblue;
   background: cornflowerblue;
 }
+
+// footer {
+//   position: relative;
+//   margin-top: 50px; /* negative value of footer height */
+//   height: 50px;
+//   clear:both;
+//   padding-top:20px;
+//   background: cornflowerblue;
+// }
 
 
 /********* END *********/

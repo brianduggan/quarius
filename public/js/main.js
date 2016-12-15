@@ -1,4 +1,4 @@
-var app = angular.module('QuariusApp', ['UsersController', 'sendMailController', 'ngCookies']);
+var app = angular.module('QuariusApp', ['UsersController', 'sendMailController', 'TestController', 'ngCookies']);
 
 // app.config(['$routeProvider', function($routeProvider){
 //   $routeProvider

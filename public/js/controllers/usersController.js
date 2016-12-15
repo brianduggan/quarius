@@ -95,7 +95,6 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   }
 
   $scope.getCurrentUser = function(){
-    var token = $cookies.get('token');
     $http.get('/users/find/current').then(function(response){
       var currentUser = response.data;
       $scope.currentUser = currentUser;

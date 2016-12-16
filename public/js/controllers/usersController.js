@@ -90,7 +90,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.logOut = function(){
     $cookies.remove('token');
-    $scope.currentUser = null;
+    $scope.signUser = null;
     $scope.getCurrentUser();
   }
 

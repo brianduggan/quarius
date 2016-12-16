@@ -24,6 +24,9 @@ app.use('/users', userRouter);
 var mailRouter = require('./routes/mail')
 app.use('/contact', mailRouter);
 
+var sampleRouter = require('./routes/sample');
+app.use('/sample', sampleRouter);
+
 app.get('/', function(req,res){
   res.render(__dirname + '/public/views/index');
 });

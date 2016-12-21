@@ -16,6 +16,9 @@ var UserSchema = mongoose.Schema({
   cellPhone: {type: String},
   type: {type: Number, required: true},
   active: {type: Boolean},
+  primaryColor: {type: String},
+  secondaryColor: {type: String},
+  vert: {type: String},
   teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }]
 }, {timestamps: true});
 

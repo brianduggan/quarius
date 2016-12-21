@@ -12,7 +12,8 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     email2: '',
     offPhone: '',
     cellPhone: '',
-    type: 0
+    type: 0,
+    active: 1
   }
 
   $scope.signUser = {
@@ -22,13 +23,18 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.newUserReset = angular.copy($scope.newUser);
 
-  $scope.allUsers = {};
+  // $scope.allUsers = {};
   $scope.currentUser = null;
   $scope.regMessage = null;
   $scope.regSuccess = false;
   $scope.logError = null;
+
   $scope.showSign = false;
   $scope.showPage = 0;
+  $scope.fourQquiz = false;
+  $scope.twelveQquiz = false;
+
+  $scope.editPersonal = false;
 
   $scope.colors = [
     {
@@ -67,12 +73,12 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     });
   }
 
-  $scope.getAllUsers = function(){
-    $http.get('/users').then(function(res){
-      // console.log(res.data.users);
-      $scope.allUsers = res.data.users;
-    })
-  }
+  // $scope.getAllUsers = function(){
+  //   $http.get('/users').then(function(res){
+  //     // console.log(res.data.users);
+  //     $scope.allUsers = res.data.users;
+  //   })
+  // }
 
   $scope.logIn = function(){
     var user = $scope.signUser;
@@ -126,6 +132,10 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.showMain = function(){
     $scope.showPage = 0;
+  }
+
+  $scope.editAccount = function(){
+    console.log('hi!');
   }
 
 }]);

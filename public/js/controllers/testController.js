@@ -16,7 +16,7 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
   $scope.sample = {
     name: '',
     email: '',
-    color: ''
+    colorSet: {}
   }
 
   $scope.getCurrentUser = function(){
@@ -27,6 +27,45 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
   };
 
   $scope.getCurrentUser();
+
+  var scoreColors = function(answers){
+    var colorSet = {
+      primaryColor: '',
+      secondaryColor: '',
+      vert: ''
+    };
+    answers.q4 === 'A' ? colorSet.vert = 'Introvert' : colorSet.vert = 'Extrovert';
+    if (answers.q1 === 'A' && answers.q2 === 'A'){
+      colorSet.primaryColor = 'Red';
+      if (answers.q3 === 'A'){
+        colorSet.secondaryColor = 'Blue';
+      } else {
+        colorSet.secondaryColor = 'Green';
+      }
+    } else if (answers.q1 === 'A' && answers.q2 === 'B'){
+      colorSet.primaryColor = 'Gold';
+      if (answers.q3 === 'A'){
+        colorSet.secondaryColor = 'Blue';
+      } else {
+        colorSet.secondaryColor = 'Green';
+      }
+    } else if (answers.q1 === 'B' && answers.q3 === 'A'){
+      colorSet.primaryColor = 'Blue';
+      if (answers.q2 === 'A'){
+        colorSet.secondaryColor = 'Red';
+      } else {
+        colorSet.secondaryColor = 'Gold';
+      }
+    } else if (answers.q1 === 'B' && answers.q3 === 'B'){
+      colorSet.primaryColor = 'Green';
+      if (answers.q2 === 'A'){
+        colorSet.secondaryColor = 'Red';
+      } else {
+        colorSet.secondaryColor = 'Gold';
+      }
+    }
+    return colorSet
+  }
 
   $scope.submit4q = function(){
     console.log($scope.quiz);
@@ -39,32 +78,30 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
         var errMess = 'Sorry, you didn\'t answer Question #' + num;
         console.log(errMess);
         return $scope.fourQerr = errMess;
-      } else {
-        score += parseInt(answers[key]);
-        $scope.fourQerr = null;
       }
     }
-    // gets color
-    var color = '';
-    if (score < 5) {
-      color = 'Green';
-    } else if (score === 5){
-      color = 'Blue';
-    } else if (score === 6){
-      color = 'Gold';
-    } else {
-      color = 'Red';
+    if (!$scope.sample.name || !$scope.sample.email) {
+      var errMess = 'Please, give us a name and e-mail to better help us serve you.'
+      return $scope.fourQerr = errMess;
     }
-    $scope.sample.color = color;
-    console.log('Your color is ' + color);
-    console.log(score);
-    console.log($scope.sample);
+    console.log(answers);
+    var colorSet = scoreColors(answers);
+    console.log(colorSet);
+    $scope.sample.primaryColor = colorSet.primaryColor;
+    $scope.sample.secondaryColor = colorSet.secondaryColor;
+    $scope.sample.vert = colorSet.vert;
     //sends the info to db, then returns results
     $http.post('/sample', $scope.sample).then(function(res){
       console.log(res);
-      var results = res;
-      if (res.data.color === 'Green'){
+      var result = res.data;
+      if (result.primaryColor === 'Green'){
         $scope.fourQresults = $scope.colors[0];
+      } else if (result.primaryColor === 'Blue'){
+        $scope.fourQresults = $scope.colors[1];
+      } else if (result.primaryColor === 'Gold'){
+        $scope.fourQresults = $scope.colors[2];
+      } else {
+        $scope.fourQresults = $scope.colors[3];
       }
     });
   };

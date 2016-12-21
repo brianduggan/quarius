@@ -4,6 +4,7 @@ var express   = require('express'),
 
 router.post('/', function(req,res){
   var newSample = new Sample(req.body);
+  console.log(newSample);
   newSample.save(function(err, dbSample){
     if (err){
       res.json({description: err});

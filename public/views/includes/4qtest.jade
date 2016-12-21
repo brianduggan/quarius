@@ -8,25 +8,29 @@ form
 form
   h4 At least 51% of the time, you tend to:
   div
-    label() Meet deadlines at the last minute
-      input(type="radio" value="1" name="q1" ng-model="quiz.q1")
-    label() Meet deadlines early
-      input(type="radio" value="2" name="q1" ng-model="quiz.q1")
+    h5 I am more...
+    label() Practical and realistic
+      input(type="radio" value="A" name="q1" ng-model="quiz.q1")
+    label() Imaginative and theoretical
+      input(type="radio" value="B" name="q1" ng-model="quiz.q1")
   div
-    label() See and point out flaws
-      input(type="radio" value="1" name="q2" ng-model="quiz.q2")
-    label() Observe and compliment others
-      input(type="radio" value="2" name="q2" ng-model="quiz.q2")
+    h5 I am more...
+    label() Flexible and spontaneous
+      input(type="radio" value="A" name="q2" ng-model="quiz.q2")
+    label() Punctual and scheduled
+      input(type="radio" value="B" name="q2" ng-model="quiz.q2")
   div
-    label() Make detailed plans and schedules
-      input(type="radio" value="1" name="q3" ng-model="quiz.q3")
-    label() Be spontaneous and flexible
-      input(type="radio" value="2" name="q3" ng-model="quiz.q3")
+    h5 I am more...
+    label() Objective and analytical
+      input(type="radio" value="A" name="q3" ng-model="quiz.q3")
+    label() Compassionate and empathetic
+      input(type="radio" value="B" name="q3" ng-model="quiz.q3")
   div
-    label() Stay organized and complete projects
-      input(type="radio" value="1" name="q4" ng-model="quiz.q4")
-    label() Juggle many projects
-      input(type="radio" value="2" name="q4" ng-model="quiz.q4")
+    h5 I am more...
+    label() Reflective and independent
+      input(type="radio" value="A" name="q4" ng-model="quiz.q4")
+    label() Outspoken and social
+      input(type="radio" value="B" name="q4" ng-model="quiz.q4")
   button(type="submit" ng-click="submit4q()") Click Me
   p.test-error(ng-if="fourQerr") {{fourQerr}}
   p.test-4-results(ng-if="fourQresults") {{fourQresults}}

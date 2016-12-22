@@ -1,7 +1,16 @@
-h2(class="tagline") ...Tagline here
+.brand(ng-show="!currentUser")
+  h2(class="tagline") ...Tagline here
+  //- This may never exist
+  img.demo-anim(src="https://www.astrologyzone.com/wp-content/themes/JointsWP-master/assets/images/horoscopes/horoscope-article-hero/az_img_horoscope_aquarius.png")
 
-//- This may never exist
-img.demo-anim(src="https://www.astrologyzone.com/wp-content/themes/JointsWP-master/assets/images/horoscopes/horoscope-article-hero/az_img_horoscope_aquarius.png")
+//- div.announcements
+//-   h3 Announcements
+//-   ul
+//-     li
+//-       h5 Hi
+//-       p Content
+//-     li
+//-       h5 Hi
 
 div(ng-show="!currentUser")
   h3 Discover Your True Colors
@@ -63,6 +72,9 @@ div(ng-show="currentUser")
     
   div(ng-show="!currentUser.primaryColor")
     p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
+    a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
+  div(ng-show="currentUser.primaryColor")
+    p Don't think your colors suit you? You can try again by clicking below
     a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
     
 .fourQtest(ng-show="fourQquiz" ng-controller="TestController")

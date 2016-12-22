@@ -21,7 +21,8 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     password: ''
   }
 
-  $scope.newUserReset = angular.copy($scope.newUser);
+  var newUserReset = angular.copy($scope.newUser);
+  var signUserReset = angular.copy($scope.signUser);
 
   // $scope.allUsers = {};
   $scope.currentUser = null;
@@ -68,7 +69,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
       } else {
         $scope.regMessage = 'Success! You\'re account has been created. Please log-in'
         $scope.regSuccess = true;
-        $scope.newUser = $scope.newUserReset;
+        $scope.newUser = newUserReset;
       }
     });
   }
@@ -82,6 +83,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.logIn = function(){
     var user = $scope.signUser;
+    console.log(user);
     $http.post('/users/authenticate', user).then(function(res){
       if (res.data.status === 302) {
         console.log(res.data.status);
@@ -96,8 +98,10 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.logOut = function(){
     $cookies.remove('token');
-    $scope.signUser = null;
+    $scope.signUser = signUserReset;
+    console.log(signUserReset);
     $scope.getCurrentUser();
+    $window.location.reload();
   }
 
   $scope.getCurrentUser = function(){

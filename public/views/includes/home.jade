@@ -1,7 +1,7 @@
 h2(class="tagline") ...Tagline here
 
 //- This may never exist
-//- img(class="")
+img.demo-anim(src="https://www.astrologyzone.com/wp-content/themes/JointsWP-master/assets/images/horoscopes/horoscope-article-hero/az_img_horoscope_aquarius.png")
 
 div(ng-show="!currentUser")
   h3 Discover Your True Colors
@@ -9,11 +9,12 @@ div(ng-show="!currentUser")
   p Take a quick quiz to gain insight into your own color personality, and share it with your team to find out more about how you can strengthen your work relationships and improve understanding of your role on the team.
   a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
   a(ng-click="twelveQquiz = true" ng-show="!twelveQquiz") Twelve Question Quiz
-  .fourQtest(ng-show="fourQquiz" ng-controller="TestController")
-    include 4qtest
 
 div(ng-show="currentUser")
   h3 Hi {{currentUser.firstname}}
+  h4(ng-show="currentUser.primaryColor") Your Primary Color is: {{currentUser.primaryColor}}
+  h4(ng-show="currentUser.secondaryColor") Your Secondary Color is: {{currentUser.secondaryColor}}
+  h4(ng-show="currentUser.vert") You are an {{currentUser.vert}}
   h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
   .edit-personal-info(ng-if="editPersonal")
     form
@@ -59,6 +60,14 @@ div(ng-show="currentUser")
           input(type="tel" id="currentUserCellPhone" ng-model="currentUser.cellPhone" placeholder="Cell Phone Number" required)
           p6 Example: 666-666-6666
       button(ng-click="editAccount()") Submit Changes
+    
+  div(ng-show="!currentUser.primaryColor")
+    p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
+    a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
+    
+.fourQtest(ng-show="fourQquiz" ng-controller="TestController")
+  include 4qtest    
+      
       
   //- 
   //- div(ng-if="!currentUser.primaryColor" ng-show="!fourQquiz")

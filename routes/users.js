@@ -65,5 +65,14 @@ router.patch('/:id', function(req,res){
   });
 });
 
+// ADDS USER RESULT SET
+router.put('/:id', function(req,res){
+  var userId = req.params.id;
+  var colorSet = req.body;
+  User.findByIdAndUpdate({'_id': userId}, colorSet, function(err, user){
+    res.json({user: userId});
+  });
+})
+
 module.exports = router;
 //

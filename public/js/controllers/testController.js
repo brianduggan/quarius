@@ -69,7 +69,6 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
 
   $scope.submit4q = function(){
     console.log($scope.quiz);
-    // scores test
     var answers = $scope.quiz
     var score = 0;
     for(var key in answers){
@@ -80,30 +79,39 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
         return $scope.fourQerr = errMess;
       }
     }
-    if (!$scope.sample.name || !$scope.sample.email) {
+    if ((!$scope.sample.name || !$scope.sample.email) && !$scope.currentUser) {
       var errMess = 'Please, give us a name and e-mail to better help us serve you.'
       return $scope.fourQerr = errMess;
     }
     console.log(answers);
     var colorSet = scoreColors(answers);
     console.log(colorSet);
-    $scope.sample.primaryColor = colorSet.primaryColor;
-    $scope.sample.secondaryColor = colorSet.secondaryColor;
-    $scope.sample.vert = colorSet.vert;
-    //sends the info to db, then returns results
-    $http.post('/sample', $scope.sample).then(function(res){
-      console.log(res);
-      var result = res.data;
-      if (result.primaryColor === 'Green'){
-        $scope.fourQresults = $scope.colors[0];
-      } else if (result.primaryColor === 'Blue'){
-        $scope.fourQresults = $scope.colors[1];
-      } else if (result.primaryColor === 'Gold'){
-        $scope.fourQresults = $scope.colors[2];
-      } else {
-        $scope.fourQresults = $scope.colors[3];
-      }
-    });
+    if ($scope.currentUser) {
+      $scope.currentUser.primaryColor = colorSet.primaryColor;
+      $scope.currentUser.secondaryColor = colorSet.secondaryColor;
+      $scope.currentUser.vert = colorSet.vert;
+      $http.put('/users/' + $scope.currentUser._id, colorSet).then(function(res){
+        console.log(res);
+      })
+    } else {
+      $scope.sample.primaryColor = colorSet.primaryColor;
+      $scope.sample.secondaryColor = colorSet.secondaryColor;
+      $scope.sample.vert = colorSet.vert;
+      //sends the info to db, then returns results
+      $http.post('/sample', $scope.sample).then(function(res){
+        console.log(res);
+        var result = res.data;
+        if (result.primaryColor === 'Green'){
+          $scope.fourQresults = $scope.colors[0];
+        } else if (result.primaryColor === 'Blue'){
+          $scope.fourQresults = $scope.colors[1];
+        } else if (result.primaryColor === 'Gold'){
+          $scope.fourQresults = $scope.colors[2];
+        } else {
+          $scope.fourQresults = $scope.colors[3];
+        }
+      });
+    }
   };
 
 }]);

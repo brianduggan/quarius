@@ -56,5 +56,14 @@ router.get('/find/current', function(req,res){
   res.json(req.user);
 });
 
+// UPDATES USER INFO
+router.patch('/:id', function(req,res){
+  var userId = req.params.id;
+  var profile = req.body;
+  User.findByIdAndUpdate({'_id': userId}, profile, function(err, user){
+    res.json({user: userId});
+  });
+});
+
 module.exports = router;
 //

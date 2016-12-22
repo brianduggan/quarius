@@ -9,37 +9,56 @@ div(ng-show="!currentUser")
   p Take a quick quiz to gain insight into your own color personality, and share it with your team to find out more about how you can strengthen your work relationships and improve understanding of your role on the team.
   a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
   a(ng-click="twelveQquiz = true" ng-show="!twelveQquiz") Twelve Question Quiz
-  //- .color-description
-  //-   .row
-  //-     .col-md-12
-  //-       h3 
-  //-   .row
-  //-     .col-md-3(ng-repeat="color in colors" class="color-box-{{color.name}}")
-  //-       h4 {{color.icon}} {{color.name}}
-  //-         ul
-  //-           li(ng-repeat="quality in color.qualities") {{quality}}
-  
   .fourQtest(ng-show="fourQquiz" ng-controller="TestController")
     include 4qtest
 
 div(ng-show="currentUser")
   h3 Hi {{currentUser.firstname}}
-  h4(ng-click="editPersonal = true") Edit Personal Information?
+  h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
   .edit-personal-info(ng-if="editPersonal")
-    form(ng-submit="editAccount")
-      div.row
-        div.col-md-3
-          label(for="newUserFirstName") First Name
-          input(type="text" id="newUserFirstName" ng-model="currentUser.firstname" placeholder="First Name" required)
+    form
+      .row
+        .col-md-3
+          label(for="currentUserFirstName") First Name
+          input(type="text" id="currentUserFirstName" ng-model="currentUser.firstname" placeholder="First Name" required)
           p6 Example: John
-        div.col-md-3
-          label(for="newUserLastName") Last Name
-          input(type="text" id="newUserLastName" ng-model="currentUser.lastname" placeholder="Last Name" required)
+        .col-md-3
+          label(for="currentUserLastName") Last Name
+          input(type="text" id="currentUserLastName" ng-model="currentUser.lastname" placeholder="Last Name" required)
           p6 Example: Smith
-        div.col-md-3
-          label(for="newUserEmail1") E-Mail Address
-          input(type="email" id="newUserEmail1" ng-model="currentUser.email1" placeholder="E-Mail" required)
+        .col-md-3
+          label(for="currentUserEmail1") E-Mail Address
+          input(type="email" id="currentUserEmail1" ng-model="currentUser.email1" placeholder="E-Mail" required)
           p6 Example: john.smith@gmail.com
+      div
+        label(for="currentUserType") Membership Level
+        select(id="currentUserType" ng-model="currentUser.type" required)
+          option(value="0") Team Member
+          option(value="1") Team Leader
+          option(value="2") Manager
+      div.row
+        div.col-md-4(ng-if="currentUser.type > 0")
+          label(for="currentUserCompany") Company/Organization
+          input(type="text" id="currentUserCompany" ng-model="currentUser.company" placeholder="Company/Organization" required)
+          p6 Example: Serval Ventures
+        div.col-md-4(ng-if="currentUser.type > 0")
+          label(for="currentUserPosition") Position
+          input(type="text" id="currentUserPosition" ng-model="currentUser.position" placeholder="Position" required)
+          p6 Example: Director of HR
+      div.row
+        div.col-md-4(ng-if="currentUser.type > 1")
+          label(for="currentUserEmail2") Alternate E-Mail Address
+          input(type="email" id="currentUserEmail2" ng-model="currentUser.email2" placeholder="Alternate E-Mail")
+          p6 Example: johnnyrocket@yahoo.com
+        div.col-md-4(ng-if="currentUser.type > 1")
+          label(for="currentUserOffPhone") Office Phone Number
+          input(type="tel" id="currentUserOffPhone" ng-model="currentUser.offPhone" placeholder="Office Phone Number" required)
+          p6 Example: 555-555-5555
+        div.col-md-4(ng-if="currentUser.type > 1")
+          label(for="currentUserCellPhone") Cell Phone Number 
+          input(type="tel" id="currentUserCellPhone" ng-model="currentUser.cellPhone" placeholder="Cell Phone Number" required)
+          p6 Example: 666-666-6666
+      button(ng-click="editAccount()") Submit Changes
       
   //- 
   //- div(ng-if="!currentUser.primaryColor" ng-show="!fourQquiz")

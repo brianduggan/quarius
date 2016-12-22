@@ -107,6 +107,14 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     });
   };
 
+  $scope.editAccount = function(){
+    var user = $scope.currentUser;
+    console.log(user);
+    $http.patch('/users/' + user._id, user).then(function(response){
+      console.log(response);
+    });
+  }
+
   $scope.signUpModal = function(){
     $scope.showSign = true;
     $scope.regSuccess = false;
@@ -134,8 +142,5 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     $scope.showPage = 0;
   }
 
-  $scope.editAccount = function(){
-    console.log('hi!');
-  }
 
 }]);

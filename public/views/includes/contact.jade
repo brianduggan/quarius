@@ -26,6 +26,6 @@ form.form-horizontal()
       textarea(id="contactMessage" ng-model="contact.message")
   div.form-group
     .col-sm-offset-2.col-sm-2
-    button(type="button" ng-click="sendMail()") Send Message
+    button.btn.btn-success(type="button" ng-click="sendMail()") Send Message
   
 p.message(ng-if="showMessage") {{showMessage}}

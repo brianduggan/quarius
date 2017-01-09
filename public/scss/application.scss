@@ -65,6 +65,14 @@ nav {
   display: inline;
 }
 
+textarea {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	width: 100%;
+}
+
 
 input[type="text"]#signUsername,
 input[type="text"]#signPassword {
@@ -84,10 +92,11 @@ input[type="text"]#signPassword {
 
 /******** REGISTER MODAL ********/
 
-.sign-up-container {
+.modal-container {
   height: 100%;
   width: 100%;
   top: 0;
+  left: 0;
   position: fixed;
   background: rgba(0,0,0,0.6);
   z-index: 5;
@@ -105,11 +114,11 @@ input[type="text"]#signPassword {
   border-radius: 5px;
 }
 
-#close-modal {
+.close-modal {
   float: right;
 }
 
-#close-modal:hover {
+.close-modal:hover {
   cursor: pointer;
 }
 

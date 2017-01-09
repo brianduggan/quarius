@@ -16,7 +16,7 @@ div(ng-show="!currentUser")
   h3 Discover Your True Colors
   h5 Managing a diverse group can be challenging
   p Take a quick quiz to gain insight into your own color personality, and share it with your team to find out more about how you can strengthen your work relationships and improve understanding of your role on the team.
-  a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
+  a(ng-click="fourQquiz = true") Four Question Quiz
   a(ng-click="twelveQquiz = true" ng-show="!twelveQquiz") Twelve Question Quiz
 
 div(ng-show="currentUser")
@@ -78,9 +78,9 @@ div(ng-show="currentUser")
     a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
   div(ng-show="currentUser.primaryColor")
     p Don't think your colors suit you? You can try again by clicking below
-    a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
+    a(ng-click="fourQquiz = true") Four Question Quiz
     
-.fourQtest(ng-show="fourQquiz" ng-controller="TestController")
+.fourQtest.modal-container(ng-show="fourQquiz" ng-controller="TestController")
   include 4qtest    
       
       

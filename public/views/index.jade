@@ -6,7 +6,7 @@ html(lang="en" ng-app="QuariusApp")
   body(ng-controller="UsersController")
     #fb-root
     script(src="./js/facebook.js")
-    .sign-up-container(ng-if="showSign")
+    .modal-container(ng-if="showSign")
       include includes/sign-up
     header
       h1(ng-click="showMain()") Quarius
@@ -23,7 +23,7 @@ html(lang="en" ng-app="QuariusApp")
             input(type="text" id="signUsername" ng-model="signUser.username" placeholder="Username")
             label(for="signPassword")
             input(type="text" id="signPassword" ng-model="signUser.password" placeholder="Password")
-            button(type="submit") Log In
+            button.btn.btn-primary(type="submit") Log In
           p(id="log-error" ng-if="logError") {{logError}}
         
             

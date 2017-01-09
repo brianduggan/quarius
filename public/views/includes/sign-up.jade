@@ -1,5 +1,5 @@
 .modal-box
-  span(id="close-modal" ng-click="closeModal()") X
+  span.close-modal(ng-click="closeModal()") X
   div.register-form(ng-if="regSuccess === false")
     h2 Register
     h6 All fields with (*) are required
@@ -62,5 +62,6 @@
         .col-sm-4
           input(type="email" id="newUserEmail2" ng-model="newUser.email2" placeholder="Alternate E-Mail")
           p Example: johnnyrocket@yahoo.com
-      button(type="submit") Register
+      .col-sm-offset-6
+        button.btn.btn-success(type="submit") Register
   p(ng-if="regMessage") {{regMessage}}

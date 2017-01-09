@@ -62,6 +62,9 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.register = function(){
     console.log($scope.newUser);
+    if ($scope.newUser.password !== $scope.newUser.confirmPassword){
+      return $scope.regMessage = "Your Passwords do not match!"
+    }
     var user = {user: $scope.newUser};
     $http.post('/users/', user).then(function(res){
       if (res.data.status === 302){

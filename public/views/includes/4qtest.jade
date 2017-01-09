@@ -9,30 +9,38 @@
     input(type="email" id="sampleEmail" ng-model="sample.email" placeholder="Email")
   form
     h4 At least 51% of the time, you tend to:
-    div
+    div.checkbox
       h5 I am more...
-      label() Practical and realistic
+      label() 
         input(type="radio" value="A" name="q1" ng-model="quiz.q1")
-      label() Imaginative and theoretical
+        |    Practical and realistic
+      label() 
         input(type="radio" value="B" name="q1" ng-model="quiz.q1")
-    div
+        |    Imaginative and theoretical
+    div.checkbox
       h5 I am more...
-      label() Flexible and spontaneous
+      label() 
         input(type="radio" value="A" name="q2" ng-model="quiz.q2")
-      label() Punctual and scheduled
+        |    Flexible and spontaneous
+      label() 
         input(type="radio" value="B" name="q2" ng-model="quiz.q2")
-    div
+        |    Punctual and scheduled
+    div.checkbox
       h5 I am more...
-      label() Objective and analytical
+      label() 
         input(type="radio" value="A" name="q3" ng-model="quiz.q3")
-      label() Compassionate and empathetic
+        |    Objective and analytical
+      label() 
         input(type="radio" value="B" name="q3" ng-model="quiz.q3")
-    div
+        |    Compassionate and empathetic
+    div.checkbox
       h5 I am more...
-      label() Reflective and independent
+      label() 
         input(type="radio" value="A" name="q4" ng-model="quiz.q4")
-      label() Outspoken and social
+        |    Reflective and independent
+      label() 
         input(type="radio" value="B" name="q4" ng-model="quiz.q4")
+        |    Outspoken and social
     button(type="submit" ng-click="submit4q()") Click Me
     p.test-error(ng-if="fourQerr") {{fourQerr}}
     p.test-4-results(ng-if="fourQresults") {{fourQresults}}

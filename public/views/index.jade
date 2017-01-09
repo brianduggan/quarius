@@ -4,6 +4,8 @@ html(lang="en" ng-app="QuariusApp")
     include includes/head
   
   body(ng-controller="UsersController")
+    #fb-root
+    script(src="./js/facebook.js")
     .sign-up-container(ng-if="showSign")
       include includes/sign-up
     header

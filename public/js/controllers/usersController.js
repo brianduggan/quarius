@@ -91,6 +91,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
       } else{
         var token = res.data.user.token;
         $cookies.put('token', token);
+        $scope.fourQquiz = false;
         $scope.getCurrentUser();
       }
     });

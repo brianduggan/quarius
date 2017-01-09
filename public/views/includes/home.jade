@@ -24,6 +24,9 @@ div(ng-show="currentUser")
   h4(ng-show="currentUser.primaryColor") Your Primary Color is: {{currentUser.primaryColor}}
   h4(ng-show="currentUser.secondaryColor") Your Secondary Color is: {{currentUser.secondaryColor}}
   h4(ng-show="currentUser.vert") You are an {{currentUser.vert}}
+  .fb-share-button(data-href="https://quarius.herokuapp.com/" data-layout="button" data-size="large" data-mobile-iframe="true")
+    a.fb-xfbml-parse-ignore(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fquarius.herokuapp.com%2F&amp;src=sdkpreparse") Share
+  a.twitter-share-button(href="https://twitter.com/intent/tweet?text=I\'m a green" data-size="large") Tweet
   h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
   .edit-personal-info(ng-if="editPersonal")
     form

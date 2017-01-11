@@ -123,6 +123,14 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     });
   }
 
+  $scope.take4Qquiz = function(){
+    $scope.fourQquiz = 1;
+  }
+
+  $scope.closeTest = function(){
+    $scope.fourQquiz = 0;
+  }
+
   $scope.signUpModal = function(){
     $scope.showSign = true;
     $scope.regSuccess = false;

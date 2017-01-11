@@ -22,7 +22,7 @@ html(lang="en" ng-app="QuariusApp")
             label(for="signUsername")
             input(type="text" id="signUsername" ng-model="signUser.username" placeholder="Username")
             label(for="signPassword")
-            input(type="text" id="signPassword" ng-model="signUser.password" placeholder="Password")
+            input(type="password" id="signPassword" ng-model="signUser.password" placeholder="Password")
             button.btn.btn-primary(type="submit") Log In
           p(id="log-error" ng-if="logError") {{logError}}
         

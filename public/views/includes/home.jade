@@ -16,7 +16,7 @@ div(ng-show="!currentUser")
   h3 Discover Your True Colors
   h5 Managing a diverse group can be challenging
   p Take a quick quiz to gain insight into your own color personality, and share it with your team to find out more about how you can strengthen your work relationships and improve understanding of your role on the team.
-  a(ng-click="fourQquiz = true") Four Question Quiz
+  a(ng-click="take4Qquiz()") Four Question Quiz
   a(ng-click="twelveQquiz = true" ng-show="!twelveQquiz") Twelve Question Quiz
 
 div(ng-show="currentUser")
@@ -32,7 +32,13 @@ div(ng-show="currentUser")
   h4(ng-show="currentUser.vert") You are an {{currentUser.vert}}
   .fb-share-button(data-href="https://quarius.herokuapp.com/" data-layout="button" data-size="large" data-mobile-iframe="true")
     a.fb-xfbml-parse-ignore(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fquarius.herokuapp.com%2F&amp;src=sdkpreparse") Share
-  a.twitter-share-button(href="https://twitter.com/intent/tweet?text=I\'m a {{currentUser.primaryColor}}!" data-size="large") Tweet
+  a.twitter-share-button(href="https://twitter.com/intent/tweet?text=I\'m a gold!" data-size="large") Tweet
+  div(ng-show="!currentUser.primaryColor")
+    p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
+    a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
+  div(ng-show="currentUser.primaryColor")
+    p Don't think your colors suit you? You can try again by clicking below
+    a(ng-click="take4Qquiz()") Four Question Quiz
   h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
   .edit-personal-info(ng-if="editPersonal")
     form
@@ -79,14 +85,12 @@ div(ng-show="currentUser")
           p6 Example: 666-666-6666
       button(ng-click="editAccount()") Submit Changes
     
-  div(ng-show="!currentUser.primaryColor")
-    p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
-    a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
-  div(ng-show="currentUser.primaryColor")
-    p Don't think your colors suit you? You can try again by clicking below
-    a(ng-click="fourQquiz = true") Four Question Quiz
-    
-.fourQtest.modal-container(ng-show="fourQquiz" ng-controller="TestController")
+  .management-level(ng-show="currentUser.type > 0")  
+    h3 Management Menu
+    h4 Your Teams:
+    h4 Would you like to create a team?
+  
+.fourQtest.modal-container(ng-show="fourQquiz > 0" ng-controller="TestController")
   include 4qtest    
       
       

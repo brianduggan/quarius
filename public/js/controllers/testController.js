@@ -19,10 +19,6 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
     colorSet: {}
   }
 
-  $scope.closeTest = function(){
-    $scope.fourQquiz = false;
-  }
-
   $scope.getCurrentUser = function(){
     $http.get('/users/find/current').then(function(response){
       var currentUser = response.data;

@@ -11,7 +11,6 @@ body {
 
 /******** END BODY STYLINGS ********/
 
-
 /******** HEADER STYLINGS ********/
 
 header {
@@ -27,6 +26,15 @@ header {
       color: cornflowerblue;
       font-family: 'Lobster', cursive;
       padding: 0 2%;
+    }
+    a {
+      color: cornflowerblue;
+      padding-left: 1%;
+    }
+    a:hover {
+      color: khaki;
+      text-decoration: none;
+      cursor: pointer;
     }
 }
 
@@ -88,6 +96,7 @@ input[type="password"]#signPassword {
   border-radius: 5px;
   margin: 10px;
   padding: 4px;
+  color: cornflowerblue;
 }
 
 #log-out {

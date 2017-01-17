@@ -12,7 +12,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     email2: '',
     offPhone: '',
     cellPhone: '',
-    type: 0,
+    type: '0',
     active: 1
   }
 
@@ -96,6 +96,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
         $cookies.put('token', token);
         $scope.fourQquiz = false;
         $scope.getCurrentUser();
+        $window.location.reload();
       }
     });
   }

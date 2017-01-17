@@ -20,75 +20,7 @@ div(ng-show="!currentUser")
   a(ng-click="twelveQquiz = true" ng-show="!twelveQquiz") Twelve Question Quiz
 
 div(ng-show="currentUser")
-  h3 Hi {{currentUser.firstname}}
-  h4(ng-show="currentUser.primaryColor") Your Primary Color is: {{currentUser.primaryColor}}
-  h4(ng-repeat="color in colors" ng-show="color.name === currentUser.primaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
-    ul
-      li(ng-repeat="attr in color.qualities") {{attr}}
-  h4(ng-show="currentUser.secondaryColor") Your Secondary Color is: {{currentUser.secondaryColor}}
-  h4(ng-repeat="color in colors" ng-show="color.name === currentUser.secondaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
-    ul
-      li(ng-repeat="attr in color.qualities") {{attr}}
-  h4(ng-show="currentUser.vert") You are an {{currentUser.vert}}
-  .fb-share-button(data-href="https://quarius.herokuapp.com/" data-layout="button" data-size="large" data-mobile-iframe="true")
-    a.fb-xfbml-parse-ignore(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fquarius.herokuapp.com%2F&amp;src=sdkpreparse") Share
-  a.twitter-share-button(href="https://twitter.com/intent/tweet?text=I\'m a gold!" data-size="large") Tweet
-  div(ng-show="!currentUser.primaryColor")
-    p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
-    a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
-  div(ng-show="currentUser.primaryColor")
-    p Don't think your colors suit you? You can try again by clicking below
-    a(ng-click="take4Qquiz()") Four Question Quiz
-  h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
-  .edit-personal-info(ng-if="editPersonal")
-    form
-      .row
-        .col-md-3
-          label(for="currentUserFirstName") First Name
-          input(type="text" id="currentUserFirstName" ng-model="currentUser.firstname" placeholder="First Name" required)
-          p6 Example: John
-        .col-md-3
-          label(for="currentUserLastName") Last Name
-          input(type="text" id="currentUserLastName" ng-model="currentUser.lastname" placeholder="Last Name" required)
-          p6 Example: Smith
-        .col-md-3
-          label(for="currentUserEmail1") E-Mail Address
-          input(type="email" id="currentUserEmail1" ng-model="currentUser.email1" placeholder="E-Mail" required)
-          p6 Example: john.smith@gmail.com
-      div
-        label(for="currentUserType") Membership Level
-        select(id="currentUserType" ng-model="currentUser.type" required)
-          option(value="0") Team Member
-          option(value="1") Team Leader
-          option(value="2") Manager
-      div.row
-        div.col-md-4(ng-if="currentUser.type > 0")
-          label(for="currentUserCompany") Company/Organization
-          input(type="text" id="currentUserCompany" ng-model="currentUser.company" placeholder="Company/Organization" required)
-          p6 Example: Serval Ventures
-        div.col-md-4(ng-if="currentUser.type > 0")
-          label(for="currentUserPosition") Position
-          input(type="text" id="currentUserPosition" ng-model="currentUser.position" placeholder="Position" required)
-          p6 Example: Director of HR
-      div.row
-        div.col-md-4(ng-if="currentUser.type > 1")
-          label(for="currentUserEmail2") Alternate E-Mail Address
-          input(type="email" id="currentUserEmail2" ng-model="currentUser.email2" placeholder="Alternate E-Mail")
-          p6 Example: johnnyrocket@yahoo.com
-        div.col-md-4(ng-if="currentUser.type > 1")
-          label(for="currentUserOffPhone") Office Phone Number
-          input(type="tel" id="currentUserOffPhone" ng-model="currentUser.offPhone" placeholder="Office Phone Number" required)
-          p6 Example: 555-555-5555
-        div.col-md-4(ng-if="currentUser.type > 1")
-          label(for="currentUserCellPhone") Cell Phone Number 
-          input(type="tel" id="currentUserCellPhone" ng-model="currentUser.cellPhone" placeholder="Cell Phone Number" required)
-          p6 Example: 666-666-6666
-      button(ng-click="editAccount()") Submit Changes
-    
-  .management-level(ng-show="currentUser.type > 0")  
-    h3 Management Menu
-    h4 Your Teams:
-    h4 Would you like to create a team?
+  include userpage.jade
   
 .fourQtest.modal-container(ng-show="fourQquiz > 0" ng-controller="TestController")
   include 4qtest    

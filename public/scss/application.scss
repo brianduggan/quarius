@@ -1,10 +1,12 @@
 /******** VARIABLE DECLARATIONS ********/
-
+@import url('https://fonts.googleapis.com/css?family=Lobster|Maven+Pro:700');
 
 /******** BODY STYLINGS ********/
 body {
-  background: skyblue;
+  background: url('../img/concrete.jpg');
+  background-size: cover;
   color: darkslategrey;
+  font-family: 'Maven Pro', serif;
 }
 
 /******** END BODY STYLINGS ********/
@@ -13,14 +15,18 @@ body {
 /******** HEADER STYLINGS ********/
 
 header {
-  background: darkseagreen;
+  background: rgba(0,0,0,0.6);
   position: fixed;
   top: 0;
   width: 100%;
   border-bottom: 0.5px solid darkblue;
   z-index: 2;
+  color: antiquewhite;
     h1 {
       display: inline-block;
+      color: cornflowerblue;
+      font-family: 'Lobster', cursive;
+      padding: 0 2%;
     }
 }
 
@@ -31,9 +37,11 @@ header nav p:hover {
 
 nav {
   display: inline;
+  font-size: 1.2em;
     p {
       padding: 1%;
       display: inline-block;
+      margin-bottom: 0;
     }
 }
 
@@ -135,7 +143,7 @@ input[type="password"]#signPassword {
   min-height: 69vh;
   padding: 1% 2% 50px 2%;
   border-radius: 5px;
-  background-color: aliceblue;
+  background-color: rgba(255,255,255,0.6);
   -webkit-box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
   box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
@@ -144,22 +152,49 @@ input[type="password"]#signPassword {
 
 /******** END MAIN CONTAINER ********/
 
-/******** COLOR INFO BOXES ********/
-.color-box-Green {
-  color: green;
+/******** COLORBOXES ********/
+h4[class*="color-box-"] {
+  background: rgba(255,165,0,0.6);
+  display: inline-block;
+  margin: 0 auto;
+  text-align: left;
+  padding: 3% 6%;
+  border-radius: 5px;
+  ul {
+    text-align: left;
+    padding: 1% 0 0 0;
+    margin: 0 auto;
+    // max-width: 50%;
+    // list-style: none;
+    // text-align: left;
+  }
 }
-
-.color-box-Blue {
-  color: blue;
-}
-
 .color-box-Gold {
   color: gold;
 }
 .color-box-Red {
   color: red;
 }
-/******** END COLOR INFO BOXES ********/
+.color-box-Blue {
+  color: blue;
+}
+.color-box-Green {
+  color: green;
+}
+/******** END COLORBOXES ********/
+
+.logged-results {
+  max-width: 80%;
+  background-color: rgba(119,136,153,0.1);
+  border-radius: 5px;
+  margin: 2% auto;
+  padding: 2%;
+  text-align: center;
+}
+
+#twitter-share {
+  margin-top: 4px;
+}
 
 /******** ABOUT PAGE ********/
 .team img {
@@ -171,8 +206,8 @@ input[type="password"]#signPassword {
 
 footer {
   border-top: 1px solid darkblue;
-  padding: 1%;
-  height: 2%;
+  padding: 0.5%;
+  height: 1%;
   color: aliceblue;
   background: cornflowerblue;
 }

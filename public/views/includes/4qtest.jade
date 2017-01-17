@@ -1,46 +1,65 @@
 .modal-box
   span.close-modal(ng-click="closeTest()") X
-  h3 4 Q Test
-  p(ng-show="!currentUser") We'd love to hear from you! Your information will not be shared etc... Please provide your name and e-mail so we can learn more about how to develop our product...
-  form(ng-show="!currentUser")
-    label(for="sampleName") Name
-    input(type="text" id="sampleName" ng-model="sample.name" placeholder="Name")
-    label(for="sampleEmail") E-Mail
-    input(type="email" id="sampleEmail" ng-model="sample.email" placeholder="Email")
-  form
-    h4 At least 51% of the time, you tend to:
-    div.checkbox
-      h5 I am more...
-      label() 
-        input(type="radio" value="A" name="q1" ng-model="quiz.q1")
-        |    Practical and realistic
-      label() 
-        input(type="radio" value="B" name="q1" ng-model="quiz.q1")
-        |    Imaginative and theoretical
-    div.checkbox
-      h5 I am more...
-      label() 
-        input(type="radio" value="A" name="q2" ng-model="quiz.q2")
-        |    Flexible and spontaneous
-      label() 
-        input(type="radio" value="B" name="q2" ng-model="quiz.q2")
-        |    Punctual and scheduled
-    div.checkbox
-      h5 I am more...
-      label() 
-        input(type="radio" value="A" name="q3" ng-model="quiz.q3")
-        |    Objective and analytical
-      label() 
-        input(type="radio" value="B" name="q3" ng-model="quiz.q3")
-        |    Compassionate and empathetic
-    div.checkbox
-      h5 I am more...
-      label() 
-        input(type="radio" value="A" name="q4" ng-model="quiz.q4")
-        |    Reflective and independent
-      label() 
-        input(type="radio" value="B" name="q4" ng-model="quiz.q4")
-        |    Outspoken and social
-    button(type="submit" ng-click="submit4q()") Click Me
-    p.test-error(ng-if="fourQerr") {{fourQerr}}
-    p.test-4-results(ng-if="fourQresults") {{fourQresults}}
+  #actual4QTest(ng-if="!fourQresults")
+    h3 4 Q Test
+    p(ng-show="!currentUser") We'd love to hear from you! Your information will not be shared etc... Please provide your name and e-mail so we can learn more about how to develop our product...
+    form(ng-show="!currentUser")
+      label(for="sampleName") Name
+      input(type="text" id="sampleName" ng-model="sample.name" placeholder="Name")
+      label(for="sampleEmail") E-Mail
+      input(type="email" id="sampleEmail" ng-model="sample.email" placeholder="Email")
+    form
+      h4 At least 51% of the time, you tend to:
+      div.checkbox
+        h5 I am more...
+        label() 
+          input(type="radio" value="A" name="q1" ng-model="quiz.q1")
+          |    Practical and realistic
+        label() 
+          input(type="radio" value="B" name="q1" ng-model="quiz.q1")
+          |    Imaginative and theoretical
+      div.checkbox
+        h5 I am more...
+        label() 
+          input(type="radio" value="A" name="q2" ng-model="quiz.q2")
+          |    Flexible and spontaneous
+        label() 
+          input(type="radio" value="B" name="q2" ng-model="quiz.q2")
+          |    Punctual and scheduled
+      div.checkbox
+        h5 I am more...
+        label() 
+          input(type="radio" value="A" name="q3" ng-model="quiz.q3")
+          |    Objective and analytical
+        label() 
+          input(type="radio" value="B" name="q3" ng-model="quiz.q3")
+          |    Compassionate and empathetic
+      div.checkbox
+        h5 I am more...
+        label() 
+          input(type="radio" value="A" name="q4" ng-model="quiz.q4")
+          |    Reflective and independent
+        label() 
+          input(type="radio" value="B" name="q4" ng-model="quiz.q4")
+          |    Outspoken and social
+      button(type="submit" ng-click="submit4q()") Click Me
+      p.test-error(ng-if="fourQerr") {{fourQerr}}
+  div.test-4-results(ng-if="fourQresults") 
+    h2 Your Results!
+    div(ng-repeat="color in colors" ng-show="color.name === fourQresults.primaryColor") 
+      h4(class="color-box-{{color.name}}") Your Primary Color is {{color.icon}}{{color.name}}
+        ul(ng-repeat="attr in color.qualities")
+          li {{attr}}
+    div(ng-repeat="color in colors" ng-show="color.name === fourQresults.secondaryColor") 
+      h4(class="color-box-{{color.name}}") Your Secondary Color is {{color.icon}}{{color.name}}
+        ul(ng-repeat="attr in color.qualities")
+          li {{attr}}
+    div
+      h4 You are an {{fourQresults.vert}}
+      p {{fourQresults}}
+  
+      
+      
+      
+      
+      //- space

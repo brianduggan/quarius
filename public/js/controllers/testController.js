@@ -91,25 +91,14 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
       $scope.currentUser.secondaryColor = colorSet.secondaryColor;
       $scope.currentUser.vert = colorSet.vert;
       $http.put('/users/' + $scope.currentUser._id, colorSet).then(function(res){
-        console.log(res);
+        $scope.closeTest();
       })
     } else {
       $scope.sample.primaryColor = colorSet.primaryColor;
       $scope.sample.secondaryColor = colorSet.secondaryColor;
       $scope.sample.vert = colorSet.vert;
-      //sends the info to db, then returns results
       $http.post('/sample', $scope.sample).then(function(res){
-        console.log(res);
-        var result = res.data;
-        if (result.primaryColor === 'Green'){
-          $scope.fourQresults = $scope.colors[0];
-        } else if (result.primaryColor === 'Blue'){
-          $scope.fourQresults = $scope.colors[1];
-        } else if (result.primaryColor === 'Gold'){
-          $scope.fourQresults = $scope.colors[2];
-        } else {
-          $scope.fourQresults = $scope.colors[3];
-        }
+        $scope.fourQresults = res.data;
       });
     }
   };

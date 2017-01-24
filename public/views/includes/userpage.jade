@@ -15,6 +15,12 @@ h3 Hi {{currentUser.firstname}}
       a.fb-xfbml-parse-ignore(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fquarius.herokuapp.com%2F&amp;src=sdkpreparse") Share
     #twitter-share
       a.twitter-share-button(href="https://twitter.com/intent/tweet?text=I\'m a gold!" data-size="large") Tweet
+    #linkedin-share
+      script(src="//platform.linkedin.com/in.js") lang: en_US
+      script(type="IN/Share" data-url="quarius.herokuapp.com")
+      
+//-     <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+//- <script type="IN/Share"></script>
 div(ng-show="!currentUser.primaryColor")
   p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
   a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
@@ -26,8 +32,19 @@ h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
   include editpersonal.jade
   
   
-.management-level(ng-show="currentUser.type > 0")  
+.management-level(ng-show="currentUser.type > 0" ng-controller="TeamsController")  
   h3 Management Menu
   h4 Your Teams:
+  ul
+    li(ng-repeat="team in currentUser.teams") {{team.name}}
   h4 Would you like to create a team?
-  p This Function has not yet been created
+    form(ng-submit="createTeam()")
+      label(for="team-name")
+      input(id="team-name" ng-model="team.name")  
+      
+
+
+
+
+
+//-

@@ -10,7 +10,7 @@ router.post('/', function(req,res){
       console.log(err);
       res.json({description: 'Sorry! This username exists!', status: 302})
     } else {
-      res.redirect('/')
+      res.redirect('/');
     }
   });
 });
@@ -19,7 +19,7 @@ router.post('/', function(req,res){
 router.post('/authenticate', function(req,res){
   var username = req.body.username;
   var password = req.body.password;
-  User.findOne({username: username}).exec(function(err, dbUser){
+  User.findOne({username: username}).populate('teams').exec(function(err, dbUser){
     if (dbUser){
       dbUser.authenticate(password, function(err2, isMatch){
         if (isMatch){
@@ -41,7 +41,7 @@ router.post('/authenticate', function(req,res){
 
 //GETS ALL USERS
 router.get('/', function(req,res){
-  User.find({}).exec(function(err, dbUsers){ //populate teams here
+  User.find({}).populate('teams').exec(function(err, dbUsers){ //populate teams here
     if (err){
       console.log(err);
       res.json({description: 'Error!', status: 302});
@@ -54,6 +54,7 @@ router.get('/', function(req,res){
 // GETS USER BY TOKEN
 router.get('/find/current', function(req,res){
   res.json(req.user);
+  console.log(req.user);
 });
 
 // UPDATES USER INFO

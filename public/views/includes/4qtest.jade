@@ -42,7 +42,7 @@
         label() 
           input(type="radio" value="B" name="q4" ng-model="quiz.q4")
           |    Outspoken and social
-      button(type="submit" ng-click="submit4q()") Click Me
+      button.btn.btn-primary(type="submit" ng-click="submit4q()") Submit Answers
       p.test-error(ng-if="fourQerr") {{fourQerr}}
   div.test-4-results(ng-if="fourQresults") 
     h2 Your Results!

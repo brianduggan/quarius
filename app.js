@@ -27,6 +27,9 @@ app.use('/contact', mailRouter);
 var sampleRouter = require('./routes/sample');
 app.use('/sample', sampleRouter);
 
+var teamRouter = require('./routes/teams');
+app.use('/teams', teamRouter);
+
 app.get('/', function(req,res){
   res.render(__dirname + '/public/views/index');
 });

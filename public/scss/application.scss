@@ -14,13 +14,13 @@ body {
 /******** HEADER STYLINGS ********/
 
 header {
-  background: rgba(0,0,0,0.6);
+  background: rgba(256, 256, 256, 1);
   position: fixed;
   top: 0;
   width: 100%;
   border-bottom: 0.5px solid darkblue;
   z-index: 2;
-  color: antiquewhite;
+  color: darkslateblue;
     h1 {
       display: inline-block;
       color: cornflowerblue;

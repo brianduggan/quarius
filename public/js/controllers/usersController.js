@@ -35,7 +35,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   $scope.fourQquiz = false;
   $scope.twelveQquiz = false;
 
-  $scope.editPersonal = false;
+  $scope.userview = 0;
 
   $scope.colors = [
     {
@@ -157,6 +157,22 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.showMain = function(){
     $scope.showPage = 0;
+  }
+
+  $scope.userHome = function(){
+    $scope.userview = 0;
+  }
+
+  $scope.userProfile = function(){
+    $scope.userview = 1;
+  }
+
+  $scope.userTeams = function(){
+    $scope.userview = 2;
+  }
+
+  $scope.userManagement = function(){
+    $scope.userview = 3;
   }
 
   $scope.getAllUsers();

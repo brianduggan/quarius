@@ -1,37 +1,40 @@
-h3 Hi {{currentUser.firstname}}
-.logged-results(ng-if="currentUser.primaryColor")
-  h4(ng-show="currentUser.primaryColor") Your Primary Color is: {{currentUser.primaryColor}}
-  h4(ng-repeat="color in colors" ng-show="color.name === currentUser.primaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
-    ul
-      li(ng-repeat="attr in color.qualities") {{attr}}
-  h4(ng-show="currentUser.secondaryColor") Your Secondary Color is: {{currentUser.secondaryColor}}
-  h4(ng-repeat="color in colors" ng-show="color.name === currentUser.secondaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
-    ul
-      li(ng-repeat="attr in color.qualities") {{attr}}
-  h4(ng-show="currentUser.vert") You are an {{currentUser.vert}}
-  .social-network-share
-    h4 Like Us on Social Media
-    .fb-share-button(data-href="https://quarius.herokuapp.com/" data-layout="button" data-size="large" data-mobile-iframe="true")
-      a.fb-xfbml-parse-ignore(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fquarius.herokuapp.com%2F&amp;src=sdkpreparse") Share
-    #twitter-share
-      a.twitter-share-button(href="https://twitter.com/intent/tweet?text=I\'m a gold!" data-size="large") Tweet
-    #linkedin-share
-      script(src="//platform.linkedin.com/in.js") lang: en_US
-      script(type="IN/Share" data-url="quarius.herokuapp.com")
-      
-//-     <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
-//- <script type="IN/Share"></script>
-div(ng-show="!currentUser.primaryColor")
-  p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
-  a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
-div(ng-show="currentUser.primaryColor")
-  p Don't think your colors suit you? You can try again by clicking below
-  a(ng-click="take4Qquiz()") Four Question Quiz
-h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
-.edit-personal-info(ng-if="editPersonal")
+.user-profile-section(ng-show="userview === 0")
+  h3 Hi {{currentUser.firstname}}
+  .logged-results(ng-if="currentUser.primaryColor")
+    h4(ng-show="currentUser.primaryColor") Your Primary Color is: {{currentUser.primaryColor}}
+    h4(ng-repeat="color in colors" ng-show="color.name === currentUser.primaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
+      ul
+        li(ng-repeat="attr in color.qualities") {{attr}}
+    h4(ng-show="currentUser.secondaryColor") Your Secondary Color is: {{currentUser.secondaryColor}}
+    h4(ng-repeat="color in colors" ng-show="color.name === currentUser.secondaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
+      ul
+        li(ng-repeat="attr in color.qualities") {{attr}}
+    h4(ng-show="currentUser.vert") You are an {{currentUser.vert}}
+    .social-network-share
+      h4 Like Us on Social Media
+      .fb-share-button(data-href="https://quarius.herokuapp.com/" data-layout="button" data-size="large" data-mobile-iframe="true")
+        a.fb-xfbml-parse-ignore(target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fquarius.herokuapp.com%2F&amp;src=sdkpreparse") Share
+      #twitter-share
+        a.twitter-share-button(href="https://twitter.com/intent/tweet?text=I\'m a gold!" data-size="large") Tweet
+      #linkedin-share
+        script(src="//platform.linkedin.com/in.js") lang: en_US
+        script(type="IN/Share" data-url="quarius.herokuapp.com")
+        
+  //-     <script src="//platform.linkedin.com/in.js" type="text/javascript"> lang: en_US</script>
+  //- <script type="IN/Share"></script>
+  div(ng-show="!currentUser.primaryColor")
+    p Looks like you haven't taken a personality quiz, click below to take our 4 question quiz
+    a(ng-click="fourQquiz = true" ng-show="!fourQquiz") Four Question Quiz
+  div(ng-show="currentUser.primaryColor")
+    p Don't think your colors suit you? You can try again by clicking below
+    a(ng-click="take4Qquiz()") Four Question Quiz
+.user-edit-section(ng-show="userview === 0")
+  h4(ng-click="userProfile()") Edit Personal Information?
+  
+.edit-personal-info(ng-if="userview === 1")
   include editpersonal.jade
   
-.management-level(ng-show="currentUser.type > 0" ng-controller="TeamsController")  
+.teams-section(ng-show="userview === 2" ng-controller="TeamsController")  
   h3 Team Menu
   h4 Your Teams:
   ul
@@ -50,17 +53,18 @@ h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
     ul(ng-show="currentTeamAddQuery")
       li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:5" ng-if="user._id !== currentUser._id") {{user.firstname}} {{user.lastname}}
         span.add-person(ng-click="addToCurrentTeam(user._id)") &nbsp; + Add
-  h4 Would you like to create a team?
-    form(ng-submit="createTeam()")
-      label(for="team-name") Team Name
-      input(id="team-name" ng-model="team.name")
-      button(type="submit") Create Team
-      //- br
-      //- label(for="") Add Team Members ( By Last Name )
-      //- input(type="text" ng-model="query.lastname")
-      //- ul(ng-show="query")
-      //-   li(ng-repeat="user in allUsers | filter:query | limitTo:5" ng-if="user._id !== currentUser._id" data-userID="{{user._id}}") {{user.firstname}} {{user.lastname}}
-      //-     span.add-person(ng-click="addToTeam") &nbsp; + Add
+  .team-creation-section(ng-show="currentUser.type > 0")
+    h4 Would you like to create a team?
+      form(ng-submit="createTeam()")
+        label(for="team-name") Team Name
+        input(id="team-name" ng-model="team.name")
+        button(type="submit") Create Team
+        //- br
+        //- label(for="") Add Team Members ( By Last Name )
+        //- input(type="text" ng-model="query.lastname")
+        //- ul(ng-show="query")
+        //-   li(ng-repeat="user in allUsers | filter:query | limitTo:5" ng-if="user._id !== currentUser._id" data-userID="{{user._id}}") {{user.firstname}} {{user.lastname}}
+        //-     span.add-person(ng-click="addToTeam") &nbsp; + Add
       
 
 

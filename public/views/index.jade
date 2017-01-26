@@ -26,9 +26,9 @@ html(lang="en" ng-app="QuariusApp")
             button.btn.btn-primary(type="submit") Log In
           p(id="log-error" ng-if="logError") {{logError}}
       div.user-menu(ng-if="currentUser")
-        span Profile
-        span Teams
-        span Team Management
+        span(ng-click="userHome()") Home
+        span(ng-click="userProfile()") Profile
+        span(ng-click="userTeams()") Teams
         
             
     .container

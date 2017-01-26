@@ -28,7 +28,18 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
     $http.get('/teams/' + id).then(function(response){
       $scope.currentTeam = response.data;
       $scope.teamManagement();
+      console.log($scope.currentTeam);
     })
+  }
+
+  $scope.filterForManagement = function(){
+    for (var i = 0; i < $scope.currentTeam.management.length; i++) {
+      if($scope.currentTeam.management[i]._id === $scope.currentUser._id){
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
 
   $scope.addToCurrentTeam = function(userID){

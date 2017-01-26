@@ -71,8 +71,9 @@
           p {{member.secondaryColor}}
         .col-sm-2
           p {{member.vert}}
-    .add-team-members(ng-show="currentTeam.management.includes(currentUser._id)")
-      label(for="") Add Team Members ( By Last Name )
+    .add-team-members(ng-show="filterForManagement()")
+      h4 Add Team Members
+      label(for="") Search by Last Name
       input(type="text" ng-model="currentTeamAddQuery.lastname")
       ul(ng-show="currentTeamAddQuery")
         li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:5" ng-if="user._id !== currentUser._id") {{user.firstname}} {{user.lastname}}

@@ -31,16 +31,36 @@ h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
 .edit-personal-info(ng-if="editPersonal")
   include editpersonal.jade
   
-  
 .management-level(ng-show="currentUser.type > 0" ng-controller="TeamsController")  
-  h3 Management Menu
+  h3 Team Menu
   h4 Your Teams:
   ul
     li(ng-repeat="team in currentUser.teams") {{team.name}}
+      span(ng-show="team.management.includes(currentUser._id)" ng-click="manageTeam(team._id)") &nbsp; Manage
+  .edit-current-team(ng-if="currentTeam")
+    h4 {{currentTeam.name}}
+    h5 Team Managers
+    ul
+      li(ng-repeat="manager in currentTeam.management") {{manager.firstname}} {{manager.lastname}}
+    h5 Team Members
+    ul
+      li(ng-repeat="member in currentTeam.teamMembers") {{member.firstname}} {{member.lastname}}
+      label(for="") Add Team Members ( By Last Name )
+    input(type="text" ng-model="currentTeamAddQuery.lastname")
+    ul(ng-show="currentTeamAddQuery")
+      li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:5" ng-if="user._id !== currentUser._id") {{user.firstname}} {{user.lastname}}
+        span.add-person(ng-click="addToCurrentTeam(user._id)") &nbsp; + Add
   h4 Would you like to create a team?
     form(ng-submit="createTeam()")
-      label(for="team-name")
-      input(id="team-name" ng-model="team.name")  
+      label(for="team-name") Team Name
+      input(id="team-name" ng-model="team.name")
+      button(type="submit") Create Team
+      br
+      label(for="") Add Team Members ( By Last Name )
+      input(type="text" ng-model="query.lastname")
+      ul(ng-show="query")
+        li(ng-repeat="user in allUsers | filter:query | limitTo:5" ng-if="user._id !== currentUser._id" data-userID="{{user._id}}") {{user.firstname}} {{user.lastname}}
+          span.add-person(ng-click="addToTeam") &nbsp; + Add
       
 
 

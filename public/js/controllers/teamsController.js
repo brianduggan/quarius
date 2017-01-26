@@ -7,6 +7,7 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
     teamMembers: []
   }
 
+  $scope.currentTeam = '';
 
   $scope.createTeam = function(){
     var team = $scope.team;
@@ -20,5 +21,32 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
       })
     })
   }
+
+  $scope.manageTeam = function(id){
+    $http.get('/teams/' + id).then(function(response){
+      $scope.currentTeam = response.data;
+    })
+  }
+
+  $scope.addToCurrentTeam = function(userID){
+    console.log(userID);
+    console.log('Hi!');
+    var teamID = $scope.currentTeam._id;
+    if( !$scope.currentTeam.teamMembers.includes(userID) ){
+      console.log('wasn\'t there yet');
+      $scope.currentTeam.teamMembers.push(userID);
+      console.log($scope.currentTeam);
+      $http.put('/teams/' + teamID, $scope.currentTeam).then(function(res1){
+        console.log(res1);
+        teamID = {teamID: teamID}
+        $http.put('/users/teams/' + userID, teamID).then(function(res2){
+          console.log(res2);
+          // $scope.currentTeam = res1.data;   WHERE SHOULD THIS GO TO ADD THE DATA LIVE???
+        })
+      });
+    }
+  }
+
+  console.log($scope.currentTeam);
 
 }]);

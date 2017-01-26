@@ -24,7 +24,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   var newUserReset = angular.copy($scope.newUser);
   var signUserReset = angular.copy($scope.signUser);
 
-  // $scope.allUsers = {};
+  $scope.allUsers = []
   $scope.currentUser = null;
   $scope.regMessage = null;
   $scope.regSuccess = false;
@@ -77,12 +77,12 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     });
   }
 
-  // $scope.getAllUsers = function(){
-  //   $http.get('/users').then(function(res){
-  //     // console.log(res.data.users);
-  //     $scope.allUsers = res.data.users;
-  //   })
-  // }
+  $scope.getAllUsers = function(){
+    $http.get('/users').then(function(res){
+      // console.log(res.data.users);
+      $scope.allUsers = res.data.users;
+    })
+  }
 
   $scope.logIn = function(){
     var user = $scope.signUser;
@@ -159,5 +159,6 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     $scope.showPage = 0;
   }
 
+  $scope.getAllUsers();
 
 }]);

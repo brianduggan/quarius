@@ -51,7 +51,6 @@ router.get('/', function(req,res){
 // GETS USER BY TOKEN
 router.get('/find/current', function(req,res){
   res.json(req.user);
-  console.log(req.user);
 });
 
 // UPDATES USER INFO
@@ -71,6 +70,23 @@ router.put('/:id', function(req,res){
     res.json({user: userId});
   });
 })
+
+router.put('/teams/:id', function(req,res){
+  console.log('userID: ' + req.params.id);
+  var teamID = req.body.teamID;
+  var userID = req.params.id;
+  User.findById(req.params.id).exec(function(err, dbUser){
+    console.log('this is the error: ' + err);
+    if(err){
+      res.json(err);
+    } else {
+      dbUser.teams.push(teamID)
+      dbUser.save(function(err2, user){
+        res.json(user);
+      }) 
+    }
+  }) 
+}) 
 
 module.exports = router;
 //

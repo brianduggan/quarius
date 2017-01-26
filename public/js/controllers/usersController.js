@@ -161,14 +161,17 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.userHome = function(){
     $scope.userview = 0;
+    $scope.showPage = 0;
   }
 
   $scope.userProfile = function(){
     $scope.userview = 1;
+    $scope.showPage = 0;
   }
 
   $scope.userTeams = function(){
     $scope.userview = 2;
+    $scope.showPage = 0;
   }
 
   $scope.userManagement = function(){

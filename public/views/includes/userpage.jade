@@ -1,14 +1,17 @@
 .user-profile-section(ng-show="userview === 0")
   h3 Hi {{currentUser.firstname}}
   .logged-results(ng-if="currentUser.primaryColor")
-    h4(ng-show="currentUser.primaryColor") Your Primary Color is: {{currentUser.primaryColor}}
-    h4(ng-repeat="color in colors" ng-show="color.name === currentUser.primaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
-      ul
-        li(ng-repeat="attr in color.qualities") {{attr}}
-    h4(ng-show="currentUser.secondaryColor") Your Secondary Color is: {{currentUser.secondaryColor}}
-    h4(ng-repeat="color in colors" ng-show="color.name === currentUser.secondaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
-      ul
-        li(ng-repeat="attr in color.qualities") {{attr}}
+    .row
+    .col-md-6
+      h4(ng-show="currentUser.primaryColor") Your Primary Color is: {{currentUser.primaryColor}}
+      h4(ng-repeat="color in colors" ng-show="color.name === currentUser.primaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
+        ul
+          li(ng-repeat="attr in color.qualities") {{attr}}
+    .col-md-6
+      h4(ng-show="currentUser.secondaryColor") Your Secondary Color is: {{currentUser.secondaryColor}}
+      h4(ng-repeat="color in colors" ng-show="color.name === currentUser.secondaryColor" class="color-box-{{color.name}}") {{color.icon}} {{color.name}}
+        ul
+          li(ng-repeat="attr in color.qualities") {{attr}}
     h4(ng-show="currentUser.vert") You are an {{currentUser.vert}}
     .social-network-share
       h4 Like Us on Social Media

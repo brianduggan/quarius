@@ -120,6 +120,10 @@ input[type="password"]#signPassword {
   display: inline-block;
 }
 
+.user-menu span:hover {
+  cursor: pointer;
+}
+
 /******** END HEADER STYLING *********/
 
 /******** REGISTER MODAL ********/
@@ -175,14 +179,14 @@ input[type="password"]#signPassword {
 
 
 /******** END MAIN CONTAINER ********/
-
+/**** Make span cursors pointers
 /******** COLORBOXES ********/
 h4[class*="color-box-"] {
   background: rgba(255,165,0,0.6);
   display: inline-block;
   margin: 0 auto;
   text-align: left;
-  padding: 3% 6%;
+  padding: 6% 12%;
   border-radius: 5px;
   ul {
     text-align: left;

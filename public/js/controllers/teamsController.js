@@ -16,6 +16,7 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
       console.log(response);
       var teamID = response.data._id;
       $scope.currentUser.teams.push(teamID);
+      $scope.teamManagement();
       $scope.getCurrentTeam(teamID)
       $http.patch('/users/'+ $scope.currentUser._id, $scope.currentUser).then(function(newRes){
         $scope.getCurrentUser();
@@ -24,6 +25,9 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
   }
 
   $scope.getCurrentTeam = function(id){
+    if($scope.currentTeam._id !== id){
+      $scope.teamManagement();
+    }
     $http.get('/teams/' + id).then(function(response){
       $scope.currentTeam = response.data;
     })
@@ -42,13 +46,12 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
         teamID = {teamID: teamID}
         $http.put('/users/teams/' + userID, teamID).then(function(res2){
           console.log(res2);
+          $scope.teamManagement();
           $scope.getCurrentTeam(teamID.teamID);
           // $scope.currentTeam = res1.data;   WHERE SHOULD THIS GO TO ADD THE DATA LIVE???
         })
       });
     }
   }
-
-  console.log($scope.currentTeam);
 
 }]);

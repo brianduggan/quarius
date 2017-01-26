@@ -174,7 +174,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     $scope.showPage = 0;
   }
 
-  $scope.userManagement = function(){
+  $scope.teamManagement = function(){
     $scope.userview = 3;
   }
 

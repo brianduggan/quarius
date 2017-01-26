@@ -44,6 +44,7 @@
     ul
       li(ng-repeat="team in currentUser.teams") {{team.name}}
         span(ng-show="team.management.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") &nbsp; Manage
+        span(ng-show="team.teamMembers.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") View
     .team-creation-section(ng-show="currentUser.type > 0")
       h4 Would you like to create a team?
         form(ng-submit="createTeam()")
@@ -52,6 +53,9 @@
           button(type="submit") Create Team
       
   .edit-current-team(ng-if="userview === 3")
+    span(id="back-team-menu" ng-click="backToTeamList()") 
+      i.fa.fa-arrow-left
+      span Back
     h4 {{currentTeam.name}}
     h5 Team Managers
     ul
@@ -59,11 +63,12 @@
     h5 Team Members
     ul
       li(ng-repeat="member in currentTeam.teamMembers" class="user-color-list-{{member.primaryColor}}") {{member.firstname}} {{member.lastname}}
-    label(for="") Add Team Members ( By Last Name )
-    input(type="text" ng-model="currentTeamAddQuery.lastname")
-    ul(ng-show="currentTeamAddQuery")
-      li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:5" ng-if="user._id !== currentUser._id") {{user.firstname}} {{user.lastname}}
-        span.add-person(ng-click="addToCurrentTeam(user._id)") &nbsp; + Add
+    .add-team-members(ng-show="currentTeam.management.includes(currentUser._id)")
+      label(for="") Add Team Members ( By Last Name )
+      input(type="text" ng-model="currentTeamAddQuery.lastname")
+      ul(ng-show="currentTeamAddQuery")
+        li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:5" ng-if="user._id !== currentUser._id") {{user.firstname}} {{user.lastname}}
+          span.add-person(ng-click="addToCurrentTeam(user._id)") &nbsp; + Add
           
         //- br
         //- label(for="") Add Team Members ( By Last Name )

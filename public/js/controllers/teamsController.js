@@ -25,11 +25,9 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
   }
 
   $scope.getCurrentTeam = function(id){
-    if($scope.currentTeam._id !== id){
-      $scope.teamManagement();
-    }
     $http.get('/teams/' + id).then(function(response){
       $scope.currentTeam = response.data;
+      $scope.teamManagement();
     })
   }
 
@@ -52,6 +50,10 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
         })
       });
     }
+  }
+
+  $scope.backToTeamList = function(){
+    $scope.userTeams();
   }
 
 }]);

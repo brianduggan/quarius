@@ -1,5 +1,6 @@
 /******** VARIABLE DECLARATIONS ********/
 @import url('https://fonts.googleapis.com/css?family=Lobster|Maven+Pro:700');
+$gold: #FFDC00;
 
 /******** BODY STYLINGS ********/
 body {
@@ -124,6 +125,10 @@ input[type="password"]#signPassword {
   cursor: pointer;
 }
 
+#back-team-menu {
+  float: right;
+}
+
 /******** END HEADER STYLING *********/
 
 /******** REGISTER MODAL ********/
@@ -198,7 +203,7 @@ h4[class*="color-box-"] {
   }
 }
 .color-box-Gold {
-  color: gold;
+  color: $gold;
 }
 .color-box-Red {
   color: red;
@@ -217,7 +222,7 @@ h4[class*="color-box-"] {
   color: red;
 }
 .user-color-list-Gold {
-  color: gold;
+  color: $gold;
 }
 .user-color-list-Blue{
   color: blue;

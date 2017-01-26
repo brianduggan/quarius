@@ -1,6 +1,9 @@
 /******** VARIABLE DECLARATIONS ********/
 @import url('https://fonts.googleapis.com/css?family=Lobster|Maven+Pro:700');
-$gold: #FFDC00;
+$gold: rgba(255,215,0,1);
+$gold-background: rgba(255,215,0, 0.6);
+$green: rgba(34,139,34,1);
+$green-background: rgba(34,139,34,0.6);
 
 /******** BODY STYLINGS ********/
 body {
@@ -216,13 +219,13 @@ h4[class*="color-box-"] {
 }
 
 .user-color-list-Green {
-  color: green;
+  background-color: $green-background;
 }
 .user-color-list-Red {
   color: red;
 }
 .user-color-list-Gold {
-  color: $gold;
+  background-color: $gold-background;
 }
 .user-color-list-Blue{
   color: blue;

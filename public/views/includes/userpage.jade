@@ -55,12 +55,12 @@ h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
       label(for="team-name") Team Name
       input(id="team-name" ng-model="team.name")
       button(type="submit") Create Team
-      br
-      label(for="") Add Team Members ( By Last Name )
-      input(type="text" ng-model="query.lastname")
-      ul(ng-show="query")
-        li(ng-repeat="user in allUsers | filter:query | limitTo:5" ng-if="user._id !== currentUser._id" data-userID="{{user._id}}") {{user.firstname}} {{user.lastname}}
-          span.add-person(ng-click="addToTeam") &nbsp; + Add
+      //- br
+      //- label(for="") Add Team Members ( By Last Name )
+      //- input(type="text" ng-model="query.lastname")
+      //- ul(ng-show="query")
+      //-   li(ng-repeat="user in allUsers | filter:query | limitTo:5" ng-if="user._id !== currentUser._id" data-userID="{{user._id}}") {{user.firstname}} {{user.lastname}}
+      //-     span.add-person(ng-click="addToTeam") &nbsp; + Add
       
 
 

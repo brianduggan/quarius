@@ -25,6 +25,10 @@ html(lang="en" ng-app="QuariusApp")
             input(type="password" id="signPassword" ng-model="signUser.password" placeholder="Password")
             button.btn.btn-primary(type="submit") Log In
           p(id="log-error" ng-if="logError") {{logError}}
+      div.user-menu(ng-if="currentUser")
+        span Profile
+        span Teams
+        span Team Management
         
             
     .container

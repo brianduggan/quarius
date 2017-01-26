@@ -3,7 +3,7 @@
 
 /******** BODY STYLINGS ********/
 body {
-  background: url('../img/concrete.jpg');
+  background: url('../img/colors.jpg');
   background-size: cover;
   color: darkslategrey;
   font-family: 'Maven Pro', serif;
@@ -14,7 +14,7 @@ body {
 /******** HEADER STYLINGS ********/
 
 header {
-  background: rgba(256, 256, 256, 1);
+  background: rgba(255,255,255,1);
   position: fixed;
   top: 0;
   width: 100%;
@@ -105,6 +105,18 @@ input[type="password"]#signPassword {
   top: 30px;
 }
 
+.user-menu {
+  background-color: lavender;
+  color: cornflowerblue;
+  width: 100%;
+}
+
+.user-menu span {
+  padding-left: 3%;
+  font-weight: normal;
+  display: inline-block;
+}
+
 /******** END HEADER STYLING *********/
 
 /******** REGISTER MODAL ********/
@@ -152,7 +164,7 @@ input[type="password"]#signPassword {
   min-height: 69vh;
   padding: 1% 2% 50px 2%;
   border-radius: 5px;
-  background-color: rgba(255,255,255,0.6);
+  background-color: rgba(255,255,255,0.75);
   -webkit-box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
   -moz-box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);
   box-shadow: 3px 3px 16px 1px rgba(0,0,0,0.75);

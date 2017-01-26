@@ -16,6 +16,7 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
       console.log(response);
       var teamID = response.data._id;
       $scope.currentUser.teams.push(teamID);
+      $scope.getCurrentTeam(teamID)
       $http.patch('/users/'+ $scope.currentUser._id, $scope.currentUser).then(function(newRes){
         $scope.getCurrentUser();
       })

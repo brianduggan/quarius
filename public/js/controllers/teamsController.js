@@ -22,7 +22,7 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
     })
   }
 
-  $scope.manageTeam = function(id){
+  $scope.getCurrentTeam = function(id){
     $http.get('/teams/' + id).then(function(response){
       $scope.currentTeam = response.data;
     })
@@ -41,6 +41,7 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
         teamID = {teamID: teamID}
         $http.put('/users/teams/' + userID, teamID).then(function(res2){
           console.log(res2);
+          $scope.getCurrentTeam(teamID.teamID);
           // $scope.currentTeam = res1.data;   WHERE SHOULD THIS GO TO ADD THE DATA LIVE???
         })
       });

@@ -36,7 +36,7 @@ h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
   h4 Your Teams:
   ul
     li(ng-repeat="team in currentUser.teams") {{team.name}}
-      span(ng-show="team.management.includes(currentUser._id)" ng-click="manageTeam(team._id)") &nbsp; Manage
+      span(ng-show="team.management.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") &nbsp; Manage
   .edit-current-team(ng-if="currentTeam")
     h4 {{currentTeam.name}}
     h5 Team Managers
@@ -44,7 +44,7 @@ h4(ng-click="editPersonal = !editPersonal") Edit Personal Information?
       li(ng-repeat="manager in currentTeam.management") {{manager.firstname}} {{manager.lastname}}
     h5 Team Members
     ul
-      li(ng-repeat="member in currentTeam.teamMembers") {{member.firstname}} {{member.lastname}}
+      li(ng-repeat="member in currentTeam.teamMembers" class="user-color-list-{{member.primaryColor}}") {{member.firstname}} {{member.lastname}}
       label(for="") Add Team Members ( By Last Name )
     input(type="text" ng-model="currentTeamAddQuery.lastname")
     ul(ng-show="currentTeamAddQuery")

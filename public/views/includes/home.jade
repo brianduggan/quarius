@@ -11,10 +11,10 @@ div(ng-show="!currentUser")
   //- a(ng-click="twelveQquiz = true" ng-show="!twelveQquiz") Twelve Question Quiz
 
 div(ng-show="currentUser")
-  include userpage.jade
+  include home/userpage.jade
   
 .fourQtest.modal-container(ng-show="fourQquiz > 0" ng-controller="TestController")
-  include 4qtest    
+  include home/4qtest    
       
       
   //- 

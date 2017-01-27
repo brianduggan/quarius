@@ -24,7 +24,11 @@ html(lang="en" ng-app="QuariusApp")
             label(for="signPassword")
             input(type="password" id="signPassword" ng-model="signUser.password" placeholder="Password")
             button.btn.btn-primary(type="submit") Log In
-          p(id="log-error" ng-if="logError") {{logError}}
+          .panel.panel-danger#log-error-display(ng-if="logError")
+            .panel-heading
+              h4 Error
+            .panel-body
+              p(id="log-error") {{logError}}
       div.user-menu(ng-if="currentUser")
         span(ng-click="userHome()") Home
         span(ng-click="userProfile()") Profile

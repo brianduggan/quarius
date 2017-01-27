@@ -64,4 +64,8 @@
           p Example: johnnyrocket@yahoo.com
       .col-sm-offset-6
         button.btn.btn-success(type="submit") Register
-  p(ng-if="regMessage") {{regMessage}}
+  .panel.panel-danger#register-error-display(ng-if="regMessage")
+    .panel-heading
+      h4 Error
+    .panel-body
+      p {{regMessage}}

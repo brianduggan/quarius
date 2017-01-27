@@ -33,11 +33,22 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
   }
 
   $scope.filterForManagement = function(){
+    console.log('hi!');
     for (var i = 0; i < $scope.currentTeam.management.length; i++) {
       if($scope.currentTeam.management[i]._id === $scope.currentUser._id){
         return true;
       } else {
         return false;
+      }
+    }
+  }
+
+  $scope.searchNewMembers = function(id){
+    for (var i = 0; i < $scope.currentTeam.teamMembers.length; i++) {
+      if ($scope.currentTeam.teamMembers[i]._id === id){
+        return false;
+      } else {
+        return true;
       }
     }
   }

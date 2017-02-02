@@ -40,7 +40,7 @@ router.post('/authenticate', function(req,res){
 
 //GETS ALL USERS
 router.get('/', function(req,res){
-  User.find({}).populate('teams').exec(function(err, dbUsers){ //populate teams here
+  User.find({}).populate('teams').exec(function(err, dbUsers){
     if (err){
       res.json({description: 'Error!', status: 302});
     }
@@ -71,6 +71,7 @@ router.put('/:id', function(req,res){
   });
 })
 
+//ADDS USER TO A TEAM
 router.put('/teams/:id', function(req,res){
   console.log('userID: ' + req.params.id);
   var teamID = req.body.teamID;
@@ -83,10 +84,10 @@ router.put('/teams/:id', function(req,res){
       dbUser.teams.push(teamID)
       dbUser.save(function(err2, user){
         res.json(user);
-      }) 
+      })
     }
-  }) 
-}) 
+  })
+})
 
 module.exports = router;
 //

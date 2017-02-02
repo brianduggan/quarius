@@ -79,7 +79,6 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.getAllUsers = function(){
     $http.get('/users').then(function(res){
-      // console.log(res.data.users);
       $scope.allUsers = res.data.users;
     })
   }
@@ -143,6 +142,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.getCurrentUser();
 
+  // REMAINING FUNCTIONS CONTROL PAGE VIEW
   $scope.showAbout = function(){
     $scope.showPage = 1;
   }

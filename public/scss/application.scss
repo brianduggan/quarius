@@ -4,6 +4,10 @@ $gold: rgba(255,215,0,1);
 $gold-background: rgba(255,215,0, 0.6);
 $green: rgba(34,139,34,1);
 $green-background: rgba(34,139,34,0.6);
+$red: rgba(205,92,92,1);
+$red-background: rgba(205,92,92,0.6);
+$blue: rgba(65,105,225,1);
+$blue-background: rgba(65,105,225,0.6);
 
 /******** BODY STYLINGS ********/
 body {
@@ -89,7 +93,6 @@ textarea {
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-
 	width: 100%;
 }
 
@@ -219,56 +222,73 @@ input[type="password"]#signPassword {
 /******** END MAIN CONTAINER ********/
 /**** Make span cursors pointers
 /******** COLORBOXES ********/
-h4[class*="color-box-"] {
-  background: rgba(255,165,0,0.6);
-  display: inline-block;
-  margin: 0 auto;
-  text-align: left;
-  padding: 6% 12%;
-  border-radius: 5px;
-  ul {
-    text-align: left;
-    padding: 1% 0 0 0;
-    margin: 0 auto;
-    // max-width: 50%;
-    // list-style: none;
-    // text-align: left;
-  }
-}
+// h4[class*="color-box-"] {
+//   background: rgba(255,165,0,0.6);
+//   display: inline-block;
+//   margin: 0 auto;
+//   text-align: left;
+//   padding: 6% 12%;
+//   border-radius: 5px;
+//   ul {
+//     text-align: left;
+//     padding: 1% 0 0 0;
+//     margin: 0 auto;
+//     // max-width: 50%;
+//     // list-style: none;
+//     // text-align: left;
+//   }
+// }
+
 .color-box-Gold {
-  color: $gold;
+  background-color: $gold-background;
 }
 .color-box-Red {
-  color: red;
+  background-color: $red-background;
 }
 .color-box-Blue {
-  color: blue;
+  background-color: $blue-background;
 }
 .color-box-Green {
-  color: green;
+  background-color: $green-background;
+}
+
+.color-box-Introvert {
+  color: white;
+  background-color: black;
+}
+
+.color-box-Extrovert {
+  color: black;
+  background-color: white;
 }
 
 .user-color-list-Green {
   background-color: $green-background;
 }
 .user-color-list-Red {
-  color: red;
+  background-color: $red-background;
 }
 .user-color-list-Gold {
   background-color: $gold-background;
 }
 .user-color-list-Blue{
-  color: blue;
+  background-color: $blue-background;
 }
 /******** END COLORBOXES ********/
 
 .logged-results {
-  max-width: 80%;
-  background-color: rgba(119,136,153,0.1);
+  // max-width: 80%;
+  // background-color: rgba(119,136,153,0.1);
   border-radius: 5px;
   margin: 2% auto;
   padding: 2%;
   text-align: center;
+  ul {
+    padding-top: 3%;
+    padding-bottom: 2%;
+    text-align: left;
+    list-style: none;
+  }
 }
 
 #twitter-share {

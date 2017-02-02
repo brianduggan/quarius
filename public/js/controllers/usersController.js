@@ -138,6 +138,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.closeModal = function(){
     $scope.showSign = !$scope.showSign;
+    $scope.regMessage = '';
   }
 
   $scope.getCurrentUser();

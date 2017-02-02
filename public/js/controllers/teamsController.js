@@ -12,6 +12,7 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
   $scope.createTeam = function(){
     var team = $scope.team;
     team.management.push($scope.currentUser._id);
+    team.teamMembers.push($scope.currentUser._id);
     $http.post('/teams', team).then(function(response){
       console.log(response);
       var teamID = response.data._id;
@@ -33,24 +34,21 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
   }
 
   $scope.filterForManagement = function(){
-    console.log('hi!');
     for (var i = 0; i < $scope.currentTeam.management.length; i++) {
       if($scope.currentTeam.management[i]._id === $scope.currentUser._id){
         return true;
-      } else {
-        return false;
       }
     }
+    return false;
   }
 
   $scope.searchNewMembers = function(id){
     for (var i = 0; i < $scope.currentTeam.teamMembers.length; i++) {
       if ($scope.currentTeam.teamMembers[i]._id === id){
         return false;
-      } else {
-        return true;
       }
     }
+    return true
   }
 
   $scope.addToCurrentTeam = function(userID){

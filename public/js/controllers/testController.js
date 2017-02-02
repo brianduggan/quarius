@@ -92,6 +92,7 @@ TestController.controller('TestController', ['$scope', '$http', '$cookies', func
       $scope.currentUser.vert = colorSet.vert;
       $http.put('/users/' + $scope.currentUser._id, colorSet).then(function(res){
         $scope.closeTest();
+        $window.location.reload();
       })
     } else {
       $scope.sample.primaryColor = colorSet.primaryColor;

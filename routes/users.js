@@ -40,7 +40,7 @@ router.post('/authenticate', function(req,res){
 
 //GETS ALL USERS
 router.get('/', function(req,res){
-  User.find({}).populate('teams').exec(function(err, dbUsers){
+  User.find({active: 1}).populate('teams').exec(function(err, dbUsers){
     if (err){
       res.json({description: 'Error!', status: 302});
     }

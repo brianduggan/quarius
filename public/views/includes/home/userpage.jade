@@ -48,10 +48,14 @@
   .team-list(ng-show="userview === 2")
     h3 Team Menu
     h4 Your Teams:
-    ul
-      li(ng-repeat="team in currentUser.teams") {{team.name}}
-        span(ng-show="team.management.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") &nbsp; Manage
-        span(ng-show="team.teamMembers.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") View
+    .team-container
+      .row(ng-repeat="team in currentUser.teams") 
+        .col-sm-4
+          h5 {{team.name}}
+        .col-sm-2
+          p(ng-show="team.management.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") &nbsp; Manage
+        .col-sm-2
+          p(ng-show="team.teamMembers.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") View
     .team-creation-section(ng-show="currentUser.type > 0")
       h4 Would you like to create a team?
         form(ng-submit="createTeam()")
@@ -63,11 +67,11 @@
     span(id="back-team-menu" ng-click="backToTeamList()") 
       i.fa.fa-arrow-left
       span Back
-    h4 {{currentTeam.name}}
-    h5 Team Managers
+    h3 {{currentTeam.name}}
+    h4 Team Managers
     ul
       li(ng-repeat="manager in currentTeam.management") {{manager.firstname}} {{manager.lastname}}
-    h5 Team Members
+    h4 Team Members
     .current-team-memberlist
       .row(ng-repeat="member in currentTeam.teamMembers" class="user-color-list-{{member.primaryColor}}")
         .col-sm-4

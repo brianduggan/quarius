@@ -78,6 +78,8 @@
           p {{member.secondaryColor}}
         .col-sm-2
           p {{member.vert}}
+        .col-sm-2(ng-show="currentUser._id !== member._id")
+          p(ng-show="filterForManagement()" ng-click="removeUserFromTeam(member._id)") Remove
     .add-team-members(ng-show="filterForManagement()")
       h4 Add Team Members
       label(for="") Search by Last Name

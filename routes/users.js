@@ -71,9 +71,10 @@ router.put('/:id', function(req,res){
   });
 })
 
-//ADDS USER TO A TEAM
+//ADDS/REMOVES USER TO/FROM A TEAM
 router.put('/teams/:id', function(req,res){
   console.log('userID: ' + req.params.id);
+  var action = req.body.action;
   var teamID = req.body.teamID;
   var userID = req.params.id;
   User.findById(req.params.id).exec(function(err, dbUser){
@@ -81,13 +82,28 @@ router.put('/teams/:id', function(req,res){
     if(err){
       res.json(err);
     } else {
-      dbUser.teams.push(teamID)
-      dbUser.save(function(err2, user){
-        res.json(user);
-      })
-    }
-  })
-})
+      if (action === 'add'){
+        dbUser.teams.push(teamID);
+        dbUser.save(function(err2, user){
+          if (err2){
+            res.json(err2);
+          }
+          res.json(user);
+        })
+      } else if (action === 'remove'){
+        var idx = dbUser.teams.indexOf(teamID);
+        dbUser.teams.splice(idx, 1);
+        dbUser.save(function(err2, user){
+          if (err2){
+            res.json(err2);
+          }
+          res.json(user)
+        })
+      }
+
+    } // end success for find user
+  }) //end callback
+}) //end put
 
 module.exports = router;
 //

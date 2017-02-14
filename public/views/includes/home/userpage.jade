@@ -58,10 +58,10 @@
           p(ng-show="team.teamMembers.includes(currentUser._id)" ng-click="getCurrentTeam(team._id)") View
     .team-creation-section(ng-show="currentUser.type > 0")
       h4 Would you like to create a team?
-        form(ng-submit="createTeam()")
-          label(for="team-name") Team Name
-          input(id="team-name" ng-model="team.name")
-          button(type="submit") Create Team
+      form(ng-submit="createTeam()")
+        label(for="team-name") Team Name
+        input(id="team-name" ng-model="team.name")
+        button(type="submit") Create Team
       
   .edit-current-team(ng-if="userview === 3")
     span(id="back-team-menu" ng-click="backToTeamList()") 

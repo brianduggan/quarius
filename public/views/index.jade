@@ -9,7 +9,7 @@ html(lang="en" ng-app="QuariusApp")
     .modal-container(ng-if="showSign")
       include includes/sign-up
     header
-      h1(ng-click="showMain()") Quarius
+      h1#wordmark(ng-click="showMain()") Quarius
       nav
         p(ng-click="showAbout()") About
         p(ng-click="showContact()") Contact
@@ -30,8 +30,9 @@ html(lang="en" ng-app="QuariusApp")
             .panel-body
               p(id="log-error") {{logError}}
       div.user-menu(ng-if="currentUser")
-        span(ng-click="userHome()") Home
-        span(ng-click="userProfile()") Profile
+        p {{currentUser.username}}@{{currentUser.company}}
+        span(ng-click="userHome()") Profile
+        span(ng-click="userProfile()") Edit Profile
         span(ng-click="userTeams()") Teams
         
             

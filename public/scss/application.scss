@@ -52,6 +52,7 @@ header nav p:hover {
 }
 
 nav {
+  margin-left: 2%;
   display: inline;
   font-size: 1.2em;
     p {
@@ -69,12 +70,6 @@ nav {
       right: 5px;
       top: 21px;
     }
-    // #log-error {
-    //   color: red;
-    //   position: absolute;
-    //   right: 40px;
-    //   top: 60px;
-    // }
 }
 
 .register-form label,
@@ -84,7 +79,6 @@ nav {
 }
 
 .register-form p {
-  // padding: 0.5% 0 1% 0;
   font-style: italic;
   display: inline;
 }
@@ -145,6 +139,13 @@ input[type="password"]#signPassword {
   background-color: lavender;
   color: cornflowerblue;
   width: 100%;
+  text-align: right;
+  p {
+    display: inline-block;
+    margin-bottom: 0;
+    color: darkblue;
+  }
+  padding-right: 1%;
 }
 
 .user-menu span {
@@ -157,11 +158,12 @@ input[type="password"]#signPassword {
   cursor: pointer;
 }
 
+
 #back-team-menu {
   float: right;
 }
 
-.add-team-members ul {
+.add-team-members ul { // WILL PROB BE ALTERED, WILL PROBABLY BE .ROW AND THIS WILL BE UNNECESSARY
   list-style: none;
 }
 

@@ -39,6 +39,13 @@
             option(value="0") Team Member
             option(value="1") Team Leader
             option(value="2") Manager
+      .form-group
+        label.col-sm-2(for="newUserPrivacy") Membership Level
+        .col-sm-4
+          select(id="newUserPrivacy" ng-model="newUser.privacy" required)
+            option(value="2") Public
+            option(value="1") Your Network/Company
+            option(value="0") Private
       .form-group(ng-if="newUser.type > 0")
         label.col-sm-2(for="newUserCompany") Company/Organization
         .col-sm-4

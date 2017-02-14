@@ -14,11 +14,12 @@ var UserSchema = mongoose.Schema({
   email2: {type: String, required: false},
   offPhone: {type: String},
   cellPhone: {type: String},
-  type: {type: Number, required: true},
-  active: {type: Boolean},
+  type: {type: Number, required: true}, // 0-Team Member, 1-Admin, 2-Manager
+  active: {type: Boolean, required: true},
   primaryColor: {type: String},
   secondaryColor: {type: String},
   vert: {type: String},
+  privacy: {type: Number, required: true}, //0-Private, 1-Network, 2-Public
   teams: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Team' }]
 }, {timestamps: true});
 

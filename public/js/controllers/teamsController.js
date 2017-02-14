@@ -81,6 +81,17 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
     }
   }
 
+  $scope.privacyLevel = function(user){
+    if (user.privacy === 2){
+      return true;
+      // in the future this will check against company names or groups, for now it is basically public
+    } else if (user.privacy === 1){
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   $scope.removeUserFromTeam = function(userID){
     console.log(userID);
     for (var i = 0; i < $scope.currentTeam.teamMembers.length; i++) {

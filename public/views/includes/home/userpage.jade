@@ -89,7 +89,7 @@
       label(for="") Search by Last Name
       input(type="text" ng-model="currentTeamAddQuery.lastname")
       ul(ng-show="currentTeamAddQuery")
-        li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:5") {{user.firstname}} {{user.lastname}}
+        li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:20" ng-if="privacyLevel(user)") {{user.firstname}} {{user.lastname}}
           span.add-person(ng-if="searchNewMembers(user._id)" ng-click="addToCurrentTeam(user._id)") &nbsp; + Add
           
         //- br

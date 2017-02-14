@@ -12,8 +12,9 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     email2: '',
     offPhone: '',
     cellPhone: '',
-    type: '0',
-    active: 1
+    type: 0,
+    active: 1,
+    privacy: 0
   }
 
   $scope.yearNow = (new Date()).getFullYear();

@@ -81,6 +81,40 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
     }
   }
 
+  $scope.addManagerToTeam = function(userID){
+    if( !$scope.currentTeam.teamMembers.includes(userID) ){
+      $scope.currentTeam.teamMembers.push(userID);
+      $scope.currentTeam.management.push(userID);
+      $http.put('/teams/' + $scope.currentTeam._id, $scope.currentTeam).then(function(res){
+        teamID = {
+          teamID: $scope.currentTeam._id,
+          action: 'add'
+        }
+        $http.put('/users/teams/' + userID, teamID).then(function(response){
+          console.log(response.data);
+          $scope.teamManagement();
+          $scope.getCurrentTeam(teamID.teamID);
+        })
+      })
+    }
+  }
+
+  $scope.searchNewManagement = function(user){
+    var team = $scope.currentTeam.management;
+    if (!user.type){
+      return false;
+    }
+    if (team){
+      for (var i = 0; i < team.length; i++) {
+        if (team[i]._id === user._id){
+          return false;
+        }
+      }
+      return true;
+    }
+    return true;
+  }
+
   $scope.privacyLevel = function(user){
     if (user.privacy === 2){
       return true;

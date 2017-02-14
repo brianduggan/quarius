@@ -73,12 +73,10 @@ router.put('/:id', function(req,res){
 
 //ADDS/REMOVES USER TO/FROM A TEAM
 router.put('/teams/:id', function(req,res){
-  console.log('userID: ' + req.params.id);
   var action = req.body.action;
   var teamID = req.body.teamID;
   var userID = req.params.id;
   User.findById(req.params.id).exec(function(err, dbUser){
-    console.log('this is the error: ' + err);
     if(err){
       res.json(err);
     } else {

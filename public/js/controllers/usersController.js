@@ -16,6 +16,8 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
     active: 1
   }
 
+  $scope.yearNow = (new Date()).getFullYear();
+
   $scope.signUser = {
     username: '',
     password: ''

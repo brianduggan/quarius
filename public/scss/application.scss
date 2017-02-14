@@ -1,5 +1,5 @@
 /******** VARIABLE DECLARATIONS ********/
-@import url('https://fonts.googleapis.com/css?family=Lobster|Maven+Pro:700');
+@import url('https://fonts.googleapis.com/css?family=Lobster|Maven+Pro:700|Proza+Libre');
 $gold: rgba(255,215,0,1);
 $gold-background: rgba(255,215,0, 0.6);
 $green: rgba(34,139,34,1);
@@ -32,7 +32,7 @@ header {
     h1 {
       display: inline-block;
       color: cornflowerblue;
-      font-family: 'Lobster', cursive;
+      font-family: 'Proza Libre', sans-serif;
       padding: 0 2%;
     }
     a {

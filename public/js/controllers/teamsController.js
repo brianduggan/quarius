@@ -116,7 +116,10 @@ teamsController.controller('TeamsController', ['$scope', '$http', '$cookies', '$
   }
 
   $scope.privacyLevel = function(user){
-    if (user.privacy === 2){
+    if (user._id === $scope.currentUser._id){
+      console.log($scope.currentTeamAddQuery);
+      return false;
+    } else if (user.privacy === 2){
       return true;
       // in the future this will check against company names or groups, for now it is basically public
     } else if (user.privacy === 1){

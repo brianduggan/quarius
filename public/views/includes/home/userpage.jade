@@ -88,10 +88,20 @@
       h4 Add Team Members
       label(for="") Search by Last Name
       input(type="text" ng-model="currentTeamAddQuery.lastname")
-      ul(ng-show="currentTeamAddQuery")
-        li(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:20" ng-if="privacyLevel(user)") {{user.firstname}} {{user.lastname}}
-          span.add-person(ng-if="searchNewMembers(user._id)" ng-click="addToCurrentTeam(user._id)") &nbsp; + Add
-          span.add-manager(ng-if="searchNewManagement(user)" ng-click="addManagerToTeam(user._id)") &nbsp; + Add Manager
+      label(for="") Search by E-Mail
+      input(type="text" ng-model="currentTeamAddQuery.email1")
+      .search-member-results(ng-show="currentTeamAddQuery")
+        .row
+          h4 Search Results
+        .row(ng-repeat="user in allUsers | filter:currentTeamAddQuery | limitTo:20" ng-if="privacyLevel(user)") 
+          .col-sm-2
+            p {{user.firstname}} {{user.lastname}}
+          .col-sm-3
+            p {{user.email1}}
+          .col-sm-2
+            p.add-person(ng-if="searchNewMembers(user._id)" ng-click="addToCurrentTeam(user._id)") + Add Team Member
+          .col-sm-2
+            p.add-manager(ng-if="searchNewManagement(user)" ng-click="addManagerToTeam(user._id)") + Add Manager
           
         //- br
         //- label(for="") Add Team Members ( By Last Name )

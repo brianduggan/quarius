@@ -222,24 +222,7 @@ input[type="password"]#signPassword {
 
 
 /******** END MAIN CONTAINER ********/
-/**** Make span cursors pointers
-/******** COLORBOXES ********/
-// h4[class*="color-box-"] {
-//   background: rgba(255,165,0,0.6);
-//   display: inline-block;
-//   margin: 0 auto;
-//   text-align: left;
-//   padding: 6% 12%;
-//   border-radius: 5px;
-//   ul {
-//     text-align: left;
-//     padding: 1% 0 0 0;
-//     margin: 0 auto;
-//     // max-width: 50%;
-//     // list-style: none;
-//     // text-align: left;
-//   }
-// }
+/******** COLOR BOX STYLINGS ********/
 
 .color-box-Gold {
   background-color: $gold-background;
@@ -302,6 +285,11 @@ input[type="password"]#signPassword {
   border-radius: 100%;
 }
 /******** END ABOUT PAGE ********/
+
+/******** CONTACT PAGE ********/
+textarea {
+  max-width: 100%;
+}
 
 /******** FOOTER ********/
 

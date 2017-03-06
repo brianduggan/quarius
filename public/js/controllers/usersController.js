@@ -38,6 +38,9 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   $scope.fourQquiz = false;
   $scope.twelveQquiz = false;
 
+  $scope.showForgot = false;
+  $scope.forgotEmail = '';
+
   $scope.userview = 0;
 
   $scope.colors = [
@@ -101,6 +104,18 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
         $window.location.reload();
       }
     });
+  }
+
+  $scope.forgotPassword = function(){
+    console.log('anything');
+    $http.put('/users/password/reset', {email: $scope.forgotEmail}).then(function(res){
+      console.log(res);
+      var password = res.data;
+      console.log(password);
+      $http.post('/contact/password/reset', {password: password, email: $scope.forgotEmail}).then(function(res){
+        console.log(res);
+      })
+    })
   }
 
   $scope.logOut = function(){

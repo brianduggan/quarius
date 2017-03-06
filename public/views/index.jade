@@ -24,11 +24,22 @@ html(lang="en" ng-app="QuariusApp")
             label(for="signPassword")
             input(type="password" id="signPassword" ng-model="signUser.password" placeholder="Password")
             button.btn.btn-primary(type="submit") Log In
+        p(ng-click="showForgot = true") Forgot Password?
           .panel.panel-danger#log-error-display(ng-if="logError")
             .panel-heading
               h4 Error
             .panel-body
               p(id="log-error") {{logError}}
+      div.modal-container(ng-show="showForgot === true")
+        div.modal-box
+          span.close-modal(ng-click="showForgot = false") X
+          h2 Forgot Your Password?
+          p This will reset your password to something we have chosen which you will receive in an email. This is NOT SECURE, so please log-in and change your password.
+          form(ng-submit="forgotPassword()")
+            label(for="forgotEmail")
+            input(type="email" id="forgotEmail" ng-model="forgotEmail" placeholder="E-Mail")
+            button(type="submit") Send E-Mail
+          
       div.user-menu(ng-if="currentUser")
         p {{currentUser.username}}@{{currentUser.company}}
         span(ng-click="userHome()") Profile

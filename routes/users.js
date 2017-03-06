@@ -103,5 +103,25 @@ router.put('/teams/:id', function(req,res){
   }) //end callback
 }) //end put
 
+router.put('/password/reset', function(req,res){
+  var email = req.body.email
+  User.findOne({email1: email}).exec(function(err, dbUser){
+    if (err){
+      console.log(err);
+    } else {
+      console.log(dbUser);
+      dbUser.randomPassword();
+      var password = dbUser.password;
+      dbUser.save(function(err2, user){
+        if(err2){
+          res.json(err2);
+        } else {
+          res.json(password);
+        }
+      })
+    }
+  })
+})
+
 module.exports = router;
 //

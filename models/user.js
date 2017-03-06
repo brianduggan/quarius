@@ -1,5 +1,6 @@
 var mongoose = require('mongoose'),
     bcrypt = require('bcryptjs'),
+    faker = require('faker'),
     crypto = require('crypto');
 
 var UserSchema = mongoose.Schema({
@@ -29,6 +30,10 @@ UserSchema.pre('save', function(next){
   }
   next();
 });
+
+UserSchema.methods.randomPassword = function(){
+  this.password = faker.internet.password();
+}
 
 UserSchema.methods.setToken = function(callback){
   var scope = this;

@@ -39,6 +39,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   $scope.twelveQquiz = false;
 
   $scope.showForgot = false;
+  $scope.forgotMessage = false;
   $scope.forgotEmail = '';
   $scope.passChange = {
     oldPass: '',
@@ -115,11 +116,16 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   $scope.forgotPassword = function(){
     console.log('anything');
     $http.put('/users/password/reset', {email: $scope.forgotEmail}).then(function(res){
-      console.log(res);
+      if (res.data.error){
+        return $scope.forgotMessage = res.data.error;
+      }
       var password = res.data;
-      console.log(password);
-      $http.post('/contact/password/reset', {password: password, email: $scope.forgotEmail}).then(function(res){
-        console.log(res);
+      $http.post('/contact/password/reset', {password: password, email: $scope.forgotEmail}).then(function(res2){
+        if (res2.data.error){
+          $scope.forgotMessage = res2.data.error;
+        } else {
+          $scope.forgotMessage = 'Successfully Reset'
+        };
       })
     })
   }
@@ -127,7 +133,9 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
   $scope.changePassword = function(){
     var userID = $scope.currentUser._id;
     var password = $scope.passChange;
-    console.log(userID);
+    if (password.confirmPass !== password.newPass){
+      return $scope.passChangeErr = 'Your new passwords do not match!';
+    }
     $http.put('/users/password/change/' + userID, password).then(function(response){
       console.log(response);
       var res = response.data;

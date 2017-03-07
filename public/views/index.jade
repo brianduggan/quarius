@@ -39,6 +39,7 @@ html(lang="en" ng-app="QuariusApp")
             label(for="forgotEmail")
             input(type="email" id="forgotEmail" ng-model="forgotEmail" placeholder="E-Mail")
             button(type="submit") Send E-Mail
+          p(ng-if="forgotMessage"){{forgotMessage}}
           
       div.user-menu(ng-if="currentUser")
         p {{currentUser.username}}@{{currentUser.company}}

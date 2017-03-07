@@ -38,7 +38,7 @@ router.post('/password/reset', function(req,res){
   };
   transporter.sendMail(mailOptions, function(error, info){
     if (error){
-      console.log(error);
+      res.json({error: error});
     } else {
       console.log('sent ' + info.envelope + ' ' + info.messageId);
       res.json(info);

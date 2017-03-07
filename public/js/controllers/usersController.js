@@ -115,6 +115,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.forgotPassword = function(){
     console.log('anything');
+    $scope.forgotMessage = 'We are processing your request.'
     $http.put('/users/password/reset', {email: $scope.forgotEmail}).then(function(res){
       if (res.data.error){
         return $scope.forgotMessage = res.data.error;
@@ -124,7 +125,7 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
         if (res2.data.error){
           $scope.forgotMessage = res2.data.error;
         } else {
-          $scope.forgotMessage = 'Successfully Reset'
+          $scope.forgotMessage = 'Successfully Reset!'
         };
       })
     })

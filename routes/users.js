@@ -123,5 +123,31 @@ router.put('/password/reset', function(req,res){
   })
 })
 
+//CHANGES PASSWORD
+router.put('/password/change/:id', function(req,res){
+  var newPass = req.body.newPass;
+  var oldPass = req.body.oldPass;
+  User.findById(req.params.id).exec(function(err, dbUser){
+    if (err){
+      res.json({error: 'There is an error trying to find your user data. Please contact the site admin.'})
+    } else {
+      dbUser.authenticate(oldPass, function(err2, isMatch){
+        if (isMatch){
+          dbUser.password = newPass;
+          dbUser.save(function(err3, dbUser){
+            if(err){
+              res.json({error: 'There was an error please try again.'})
+            } else {
+              res.json({message: 'Password Successfully Changed!'});
+            }
+          })
+        } else {
+          res.json({error: 'Your Password is Not Correct. Please try again.'});
+        }
+      })
+    }
+  })
+})
+
 module.exports = router;
 //

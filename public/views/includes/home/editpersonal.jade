@@ -1,4 +1,5 @@
 h3 Edit Profile
+h5(ng-click="showEditPassword()") Change Password?
 form.form-horizontal
   .form-group
     label.col-sm-2(for="currentUserFirstName") First Name
@@ -38,3 +39,20 @@ form.form-horizontal
     .col-sm-4
       input(type="email" id="currentUserEmail2" ng-model="currentUser.email2" placeholder="Alternate E-Mail")
   button(ng-click="editAccount()") Submit Changes
+
+form.changePassword(ng-submit="changePassword()")
+  h3 Change Password
+  .form-group
+    label.col-sm-3(for="userOldPass") Current Password
+    .col-sm-9
+      input(type="password" id="userOldPass" ng-model="passChange.oldPass")
+  .form-group
+    label.col-sm-3(for="userNewPass") New Password
+    .col-sm-9
+      input(type="password" id="userNewPass" ng-model="passChange.newPass")
+  .form-group 
+    label.col-sm-3(for="userConfirmPass") Confirm New Password
+    .col-sm-9
+      input(type="password" id="userConfirmPass" ng-model="passChange.confirmPass")
+  button(type="submit") Change Password
+  p.change-pass-error(ng-show="passChangeErr") {{passChangeErr}}

@@ -40,6 +40,12 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
 
   $scope.showForgot = false;
   $scope.forgotEmail = '';
+  $scope.passChange = {
+    oldPass: '',
+    newPass: '',
+    confirmPass: ''
+  };
+  $scope.passChangeErr = false;
 
   $scope.userview = 0;
 
@@ -115,6 +121,21 @@ usersController.controller('UsersController', ['$scope', '$http', '$cookies', '$
       $http.post('/contact/password/reset', {password: password, email: $scope.forgotEmail}).then(function(res){
         console.log(res);
       })
+    })
+  }
+
+  $scope.changePassword = function(){
+    var userID = $scope.currentUser._id;
+    var password = $scope.passChange;
+    console.log(userID);
+    $http.put('/users/password/change/' + userID, password).then(function(response){
+      console.log(response);
+      var res = response.data;
+      if (res.err){
+        $scope.passChangeErr = res.err;
+      } else {
+        $scope.passChangeErr = res.message;
+      }
     })
   }
 
